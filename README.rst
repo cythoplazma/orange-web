@@ -19,6 +19,6 @@ Project Managers would be able to:
 
 1. Create new projects and promote their efforts to the public
 2. Upload their data in a predefined format, or retrieve it via web APIs (optional)
-3. Export the fruits of Collaborators' efforts and use the tags to build a classification model, which they would be required to share with the project's Collaborators
+3. Export the fruits of Collaborators' efforts and use the tags to build a classification model (with their own resources), which they would be required to share with the project's Collaborators
 
 Development will focus on the application having smooth mobile device performance, while trying to pack as much features into what would be presented as a simple tagging interface.
