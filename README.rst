@@ -4,10 +4,8 @@ Classifly: Web application/service for efficient crowdsourced tagging and classi
 ---------------------------------------------------------------------
 "Izbrana poglavja iz računalništva in informatike" course project
 ---------------------------------------------------------------------
-
-Authors
-=======
-Miha Jenko, Mark Urh Rebec
+:Authors: Miha Jenko; Mark Urh Rebec
+:organization: classifly
 
 Idea description
 ================
