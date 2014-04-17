@@ -1,1 +1,1 @@
-web: npm start
+web: http-server -p 8000
