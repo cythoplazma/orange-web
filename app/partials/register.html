@@ -1,5 +1,5 @@
 <!-- action="{% url "contribute" %}"   method="post" -->
-<form role="form" ng-submit="registerUser()" class="form-horizontal" name="registerForm">
+<form role="form" class="form-horizontal" name="registerForm">
   <div class="form-group">
   	<label for="email" class="col-sm-2 control-label">Email address:</label>
   	<div class="col-sm-6">
@@ -32,8 +32,7 @@
   	</div>
   </div>
 	<div class="col-sm-offset-2 col-sm-10">
-  		<button type="submit" class="btn btn-default">Cancel</button>
-  		<button id="register" type="submit" class="btn btn-primary" ng-show="registerForm.$valid" ng-hide="registerForm.$error">Register</button>
-      <button id="register" type="submit" class="btn btn-primary" ng-hide="registerForm.$valid" ng-show="registerForm.$error" disabled="disabled">Register</button>
+  		<a href="#" id="register" type="submit" class="btn btn-primary" ng-show="registerForm.$valid" ng-hide="registerForm.$error" ng-click="registerUser()">Register</a>
+      <a href="#" id="register" type="submit" class="btn btn-primary" ng-hide="registerForm.$valid" ng-show="registerForm.$error" disabled="disabled">Register</a>
   	</div>
 </form>
