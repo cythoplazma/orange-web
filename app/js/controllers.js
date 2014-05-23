@@ -25,18 +25,25 @@ angular.module('myApp.controllers', [])
     var ref = new Firebase('https://classifly.firebaseio.com');
     $rootScope.authClient = FirebaseSimpleLogin(ref, function(error, user) {
       $rootScope.user = user;
+      $rootScope.error = error;
       if (error) {
           // an error occurred while attempting login
-        console.log(error);
+        console.log($rootScope.error);
         $('p.status').text("Failure to login!");
       }
-      else if (user) {
+      else if ($rootScope.user) {
         // user authenticated with Firebase
         console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+        $('a.login-button').text("Logout");
         $('p.status').text("You're logged in now!");
+        $rootScope.logout = function() {
+          $rootScope.authClient.logout();
+          $('a.logout-button').text("Login");
+        }
       }
       else {
       // user is logged out
+        $('a.login-button').text("Login");
         $('p.status').text("Logged out.");
       }
     });
@@ -45,12 +52,13 @@ angular.module('myApp.controllers', [])
         $rootScope.authClient.createUser($scope.email, $scope.password, function(error) {
           if (error) {
             console.log(error);
+          } else {
+            $rootScope.authClient.login('password', {
+              'email': $scope.email,
+              'password': $scope.password,
+              'rememberMe': false
+            });
           }
-        });
-        $rootScope.authClient.login('password', {
-          'email': $scope.email,
-          'password': $scope.password,
-          'rememberMe': false
         });
       }
     }
@@ -60,22 +68,27 @@ angular.module('myApp.controllers', [])
     var ref = new Firebase('https://classifly.firebaseio.com');
     $rootScope.authClient = FirebaseSimpleLogin(ref, function(error, user) {
       $rootScope.user = user;
-      if (error) {
+      $rootScope.error = error;
+      if ($rootScope.error) {
           // an error occurred while attempting login
         console.log(error);
         $('p.status').text("Failure to login!");
       }
-      else if (user) {
+      else if ($rootScope.user) {
         // user authenticated with Firebase
         console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
         $('p.status').text("You're logged in now!");
+        $('a.login-button').text("Logout");
+        $('li.register-button').hide();
         $rootScope.logout = function() {
-          console.log("zavpij!");
           $rootScope.authClient.logout();
+          $('a.logout-button').text("Login");
         }
       }
       else {
       // user is logged out
+        $('li.register-button').show();
+        $('a.login-button').text("Login");
         $('p.status').text("Logged out.");
       }
     });
