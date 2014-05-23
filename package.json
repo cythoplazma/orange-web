@@ -14,7 +14,7 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "start": "http-server -p $NODE_ENV",
+    "start": "http-server -p $PORT",
     "test": "karma start test/karma.conf.js",
     "update-webdriver": "webdriver-manager update",
     "protractor": "protractor test/protractor-conf.js",
