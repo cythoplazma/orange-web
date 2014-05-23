@@ -1,1 +1,2 @@
-web: http-server -p 5000
+web: npm start
+
