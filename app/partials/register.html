@@ -21,7 +21,7 @@
   <div class="form-group">
   	<label for="password2" class="col-sm-2 control-label">Repeat Password:</label>
   	<div class="col-sm-6">
-  		<input type="password" class="form-control" id="password2" ng-model="password2" placeholder="Re-type password" required>
+  		<input type="password" class="form-control" id="password2" ng-model="password2" name="Password2" placeholder="Re-type password" required>
   	</div>
   </div>
   <div class="col-sm-offset-2 col-sm-10">
@@ -32,7 +32,7 @@
   	</div>
   </div>
 	<div class="col-sm-offset-2 col-sm-10">
-  		<a href="#" id="register" type="submit" class="btn btn-primary" ng-show="registerForm.$valid" ng-hide="registerForm.$error" ng-click="registerUser()">Register</a>
-      <a href="#" id="register" type="submit" class="btn btn-primary" ng-hide="registerForm.$valid" ng-show="registerForm.$error" disabled="disabled">Register</a>
+  		<button id="register" type="submit" class="btn btn-primary" ng-show="registerForm.$valid" ng-hide="registerForm.$error" ng-click="registerUser()">Register</a>
+      <button id="register" type="submit" class="btn btn-primary" ng-hide="registerForm.$valid" ng-show="registerForm.$error" disabled="disabled">Register</a>
   	</div>
 </form>

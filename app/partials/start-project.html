@@ -1,53 +1,53 @@
-<form action="#" method="get" role="form" class="form-horizontal">
+<form role="form" class="form-horizontal">
   <div class="form-group">
     <label for="title" class="col-sm-2 control-label">Project Title:</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="title" required name="title" placeholder="Project title">
+      <input type="text" class="form-control" id="title" required name="Title" placeholder="Project title">
     </div>    
   </div>
   <div class="form-group">
     <label for="summary" class="col-sm-2 control-label">Summary:</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="description" required name="description" placeholder="A short summary that will be displayed on the front page">
+      <input type="text" class="form-control" id="description" required name="Description" placeholder="A short summary that will be displayed on the front page">
     </div>
   </div>
   <div class="form-group">
     <label for="description" class="col-sm-2 control-label">Full Description:</label>
     <div class="col-sm-6">
-      <textarea class="form-control" id="description" required name="description" cols="4" placeholder="A longer description of your project"></textarea>
+      <textarea class="form-control" id="description" required name="FullDescription" cols="4" placeholder="A longer description of your project"></textarea>
     </div>
   </div>
   <div class="form-group">
     <label for="data" class="col-sm-2 control-label">Data File (must be JSON):</label>
     <div class="col-sm-6">
-      <input type="file" id="data" required name="data">
+      <input type="file" id="data" required name="Data">
     </div>
   </div>
   <div class="form-group">
     <label for="tags" class="col-sm-2 control-label">Tags (separate with commas):</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="tags" name="tags" required  placeholder="Tags that will be available to users for tagging your data">
+      <input type="text" class="form-control" id="tags" name="Tags" required  placeholder="Tags that will be available to users for tagging your data">
     </div>
   </div>
   <div class="form-group">
     <label for="tags" class="col-sm-2 control-label">Required Passes:</label>
     <div class="col-sm-6">
-      <input type="number" min="1" class="form-control" id="tags" name="tags" required  placeholder="Nr. of tag sets each data member should have for project completion">
+      <input type="number" min="1" class="form-control" id="tags" name="Tags" required  placeholder="Nr. of tag sets each data member should have for project completion">
     </div>
   </div>
   <div class="form-group">
     <label for="help" class="col-sm-2 control-label">Help:</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="help" name="help" placeholder="e.g. 'We're tagging this way and that way.'">
+      <input type="text" class="form-control" id="help" name="Help" placeholder="e.g. 'We're tagging this way and that way.'">
     </div>
   </div>
   <div class="col-sm-offset-2 col-sm-10">
     <div class="checkbox">
-      <label for="agreement"><input type="checkbox" id="agreement" required name="agreement">I agree to terms of this site.</label>
+      <label for="agreement"><input type="checkbox" id="agreement" required name="Agreement">I agree to terms of this site.</label>
     </div>
   </div>
   <div class="col-sm-offset-2 col-sm-10">
     <button type="submit" value="Cancel" class="btn btn-default">Cancel</button>
-    <button type="submit" value="Submit and Start Project" class="btn btn-primary">Submit</button>
+    <button type="submit" value="Submit and Start Project" ng-click="storeInFirebase()" class="btn btn-primary">Submit</button>
   </div>
 </form>
