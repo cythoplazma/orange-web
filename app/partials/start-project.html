@@ -1,20 +1,20 @@
-<form role="form" class="form-horizontal">
+<form method="get" role="form" class="form-horizontal">
   <div class="form-group">
     <label for="title" class="col-sm-2 control-label">Project Title:</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="title" required name="Title" placeholder="Project title">
+      <input type="text" class="form-control" id="title" name="Title" ng-model="title" placeholder="Project title" required>
     </div>    
   </div>
   <div class="form-group">
     <label for="summary" class="col-sm-2 control-label">Summary:</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="description" required name="Description" placeholder="A short summary that will be displayed on the front page">
+      <input type="text" class="form-control" id="summary" ng-model="summary" name="Summary" placeholder="A short summary that will be displayed on the front page" maxlength="100" required>
     </div>
   </div>
   <div class="form-group">
     <label for="description" class="col-sm-2 control-label">Full Description:</label>
     <div class="col-sm-6">
-      <textarea class="form-control" id="description" required name="FullDescription" cols="4" placeholder="A longer description of your project"></textarea>
+      <textarea class="form-control" id="description" ng-model="description" name="Full Description" cols="4" placeholder="A longer description of your project" maxlength="2000" required></textarea>
     </div>
   </div>
   <div class="form-group">
@@ -26,28 +26,28 @@
   <div class="form-group">
     <label for="tags" class="col-sm-2 control-label">Tags (separate with commas):</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="tags" name="Tags" required  placeholder="Tags that will be available to users for tagging your data">
+      <input type="text" class="form-control" id="tags" ng-model="tags" name="Tags" autofocus placeholder="Tags that will be available to users for tagging your data" required>
     </div>
   </div>
   <div class="form-group">
-    <label for="tags" class="col-sm-2 control-label">Required Passes:</label>
+    <label for="passes" class="col-sm-2 control-label">Required Passes:</label>
     <div class="col-sm-6">
-      <input type="number" min="1" class="form-control" id="tags" name="Tags" required  placeholder="Nr. of tag sets each data member should have for project completion">
+      <input type="number" min="1" class="form-control" id="passes" ng-model="passes" name="Passes" placeholder="Nr. of tag sets each data member should have for project completion" required>
     </div>
   </div>
   <div class="form-group">
     <label for="help" class="col-sm-2 control-label">Help:</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="help" name="Help" placeholder="e.g. 'We're tagging this way and that way.'">
+      <input type="text" class="form-control" id="help" ng-model="help" name="Help" placeholder="e.g. 'We're tagging this way and that way.'">
     </div>
   </div>
   <div class="col-sm-offset-2 col-sm-10">
     <div class="checkbox">
-      <label for="agreement"><input type="checkbox" id="agreement" required name="Agreement">I agree to terms of this site.</label>
+      <label for="agreement"><input type="checkbox" id="agreement" ng-model="agreement" name="Agreement" required>I agree to the terms of this site!</label>
     </div>
   </div>
   <div class="col-sm-offset-2 col-sm-10">
-    <button type="submit" value="Cancel" class="btn btn-default">Cancel</button>
-    <button type="submit" value="Submit and Start Project" ng-click="storeInFirebase()" class="btn btn-primary">Submit</button>
+    <a href="#" value="Cancel" class="btn btn-default">Cancel</a>
+    <button type="button" value="Start Project" ng-click="storeInFirebase()" class="btn btn-primary">Start Project</button>
   </div>
 </form>

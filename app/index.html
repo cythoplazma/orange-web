@@ -1,35 +1,35 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en" ng-app="myApp">
 <head>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/app.css"/>
+  <!--<link rel="stylesheet" href="css/appmin.css">-->
+  <link rel="stylesheet" href="css/app.css" >
+  <link rel="stylesheet" href="css/animations.css" >
+  <link rel="stylesheet" href="css/bootstrap.min.css" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <title>Classifly</title>
 </head>
 
-<body>
-  <div class = "navbar navbar-inverse navbar-static-top">
-    <div class = "container">
+<body ng-cloak>
+  <div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
            
-      <a href ="#" class ="navbar-brand">Classifly</a>
+      <a href="#" class="navbar-brand">Classifly</a>
      
-      <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
-            <span class = "icon-bar"></span>
-            <span class = "icon-bar"></span>
-            <span class = "icon-bar"></span>
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
       </button>
      
-      <div class = "collapse navbar-collapse navHeaderCollapse">
-        <ul class = "nav navbar-nav navbar-right">
-          <li><a href="#/core">Core</a></li>
-          <li class="reg-button"><a ng-show="!user" ng-hide="user" href="#/register">Register</a></li>
-          <li><a href="#/usercp">Settings</a></li>
-          <li><a href="#/start-project">Start Project</a></li>
-          <li><a href="#/project-details">Project Details</a></li>
-          <li ng-show="!user" ng-hide="user"><a class="login-button" href="#/login">Login</a></li>
-          <li ng-show="user" ng-hide="!user"><span class="logout-button" ng-click="logout()">Logout</span></li>
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <a id="top"></a>
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-show="user == undefined" class="reg-button"><a ng-show="!user" ng-hide="user" href="#/register">Register</a></li>
+          <li ng-show="user"><a href="#/start-project">New Project</a></li>
+          <li ng-show="user"><a href="#/usercp">User settings</a></li>
+          <li ng-show="user == undefined"><a class="login-button" href="#/login">Login</a></li>
+          <li ng-show="user"><a href="#top" type="button" class="logout-button" ng-click="logout()">Logout</a></li>
         </ul>
       </div>
 
@@ -40,9 +40,9 @@
     <div ng-view class="container view-frame"></div>
   </div>
 
-  <div class = "navbar navbar-default navbar-fixed-bottom">       
-    <div class = "container">
-      <p class = "navbar-text pull-left">Site Built By Clasifly</p>
+  <div class="navbar navbar-default navbar-fixed-bottom">       
+    <div class="container">
+      <p class="navbar-text pull-left">Site Built By Clasifly</p>
     </div>
   </div>
   <!--<div>Angular seed app: v<span app-version></span></div>-->
@@ -50,6 +50,7 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <!--<script src="js/appmin.js"></script>-->
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
   <script src="../bower_components/angular-resource/angular-resource.js"></script>
@@ -61,18 +62,16 @@
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/animations.js"></script>
-  <script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+   <!--<script>
+	// (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	// (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	// m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	// })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	ga('create', 'UA-51234709-1', 'fierce-refuge-7107.herokuapp.com');
-	ga('send', 'pageview');
-  </script>
+	// ga('create', 'UA-51234709-1', 'fierce-refuge-7107.herokuapp.com');
+	// ga('send', 'pageview');
+ //  </script>-->
 </body>
 </html>

@@ -1,8 +1,8 @@
-<form role="form" class="form-horizontal">
+<form method="get" role="form" class="form-horizontal">
   <div class="form-group">
     <label for="username" class="col-sm-2 control-label">Display Name:</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="username" name="Display Name" ng-model="dname" required>
+      <input type="text" class="form-control" id="username" name="Display Name" ng-model="dname" autofocus required>
     </div>
   </div>
   <div class="form-group">
@@ -24,6 +24,6 @@
   	</div>
 	</div>
 	<div class="col-sm-offset-2 col-sm-10">
-  		<button type="submit" ng-click="changeUserData()" class="btn btn-primary">Update Info</button>
+  		<button type="button" ng-click="changeUserData()" class="btn btn-primary">Update Info</button>
   </div>
 </form>

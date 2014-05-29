@@ -2,9 +2,9 @@
     <div class="jumbotron">
         <center>
             <h1>Welcome to Classifly!</h1>
-            <p>Start using Classifly app now! It's easy and free!</p>
-            <a href="#/register"><button class="btn btn-primary">Sign up</button></a>
-            <a href="#/login"><button class="btn btn-success">Log in</button></a>
+            <p>An app for crowdsourced tagging. It's sexy and free!</p>
+            <a href="#/register" ng-hide="user"><button class="btn btn-primary">Sign up</button></a> 
+            <a href="#/login" ng-hide="user"><button class="btn btn-success">Log in</button></a>
         </center>
     </div>
 </div>
@@ -12,10 +12,14 @@
         <h3>Public Project Listing</h3>
         <table class="table table-stripped table-centered">
             <tr>
-                <th>#</th> <th>Project Name</th> <th>Summary</th>
+                <th>#</th> <th>Project Name</th> <th>Summary</th> <th ng-hide="user==undefined">Action</th> <th>Details</th>
             </tr>
-            <tr ng-repeat="project in data.subdata">
-                <td>{{$index+1}}</td> <td>{{project.name}}</td> <td>{{project.summary}}</td>
+            <tr ng-repeat="(key, project) in projects">
+                <td ng-init="part = isParticipant(project.participants)">{{$index+1}}</td>
+                <td>{{project.title}}</td> <td>{{project.summary}}</td>
+                <td ng-show="part"><a ng-href="#/project/{{key}}">Continue</a></td>
+                <td ng-hide="part || user==undefined"><a  ng-href="#/project/{{key}}" ng-click="addUserToProject(key)">Start</a></td>
+                <td><a ng-href="#/project-details/{{key}}">Details</a></td>
             </tr>
         </table>
 </div>

@@ -2,33 +2,118 @@
 
 /* Firebase base */
 var fbRef = 'https://classifly.firebaseio.com';
+
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-	.controller('CoreCtrl', ['$scope', 'Data', function($scope, Data) {
-	  $scope.data = {};
-		Data.get(function(response) {
-			$scope.data.subdata = response;
-		});
+	.controller('CoreCtrl', ['$scope', '$routeParams', '$rootScope', '$window', function($scope, $routeParams, $rootScope, $window) {
+	 //  $scope.data = {};
+		// Data.get(function(response) {
+		// 	$scope.data.subdata = response;
+		// });
+    var ref = new Firebase(fbRef + '/projects');
+    ref.child($routeParams.projectId).once('value', function(data) {
+      $scope.$apply(function() {
+        $scope.project = data.val();
+        $scope.tag = function(key) {
+          ref.child($routeParams.projectId+'/participants').push($rootScope.user.uid);
+        }
+      });
+    }, function(err) {
+      console.log(err); 
+    });
 	}])
-	.controller('ProjectCtrl', ['$scope', 'Projects', function($scope, Projects) {
-		$scope.data = {};
-		Projects.get(function(response) {
-			$scope.data.subdata = response;
-		});
+	.controller('ProjectCtrl', ['$scope', '$rootScope', '$window', function($scope, $rootScope, $window) {
+		// $scope.data = {};
+		// Projects.get(function(response) {
+		// 	$scope.data.subdata = response;
+		// });
+    var ref = new Firebase(fbRef + '/projects');
+    ref.once('value', function(data) {
+      $scope.$apply(function() {
+        var alldata = data.val();
+        $scope.projects = alldata;
+        $scope.isParticipant = function(part) {
+          if ($rootScope.user) {
+            for (var id in part) {
+              if(part[id] === $rootScope.user.uid) return true;
+            }
+            return false;
+          }
+          else return false;
+        }
+        $scope.addUserToProject = function(proj) {
+          ref.child(proj+'/participants').push($rootScope.user.uid);
+        }
+      });
+    }, function(err) {
+      console.log(err); 
+    });
 	}])
-  .controller('StartProjectCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+  .controller('ProjectDetailsCtrl', ['$scope', '$rootScope', '$routeParams', '$window', function($scope, $rootScope, $routeParams, $window) {
+    // $scope.data = {};
+    // Projects.get(function(response) {
+    //  $scope.data.subdata = response;
+    // });
+    $scope.projectId = $routeParams.projectId;
+    var ref = new Firebase(fbRef + '/projects');
+    ref.child($routeParams.projectId).once('value', function(data) {
+      $scope.$apply(function() {
+        var alldata = data.val();
+        $scope.project = alldata;
+        function isParticipant(part) {
+          if ($rootScope.user) {
+            for (var id in part) {
+              if(part[id] === $rootScope.user.uid) return true;
+            }
+            return false;
+          }
+          else return false;
+        }
+        $scope.addUserToProject = function() {
+          ref.child($routeParams.projectId+'/participants').push($rootScope.user.uid);
+        }
+        $scope.part = isParticipant(alldata.participants);
+      });
+    }, function(err) {
+      console.log(err); 
+    });
+  }])
+  .controller('StartProjectCtrl', ['$scope', '$rootScope', '$window', function($scope, $rootScope, $window) {
     $scope.storeInFirebase = function() {
       var file = $('#data').get(0).files[0];
-      console.log(file);
       var reader = new FileReader();
       reader.onload = function(e) {
-        var ref = new Firebase(fbRef + '/projects');
-        var refId = ref.push(JSON.parse(e.target.result));
-        $rootScope.user['project_owner'].set(refId);
-        console.log($rootScope.user['project_owner'].get());
+        var ref1 = new Firebase(fbRef + '/projects');
+        var newRef = ref1.push({
+          'title': $scope.title,
+          'summary': $scope.summary,
+          'description': $scope.description,
+          'data': JSON.parse(e.target.result),
+          'tags': $scope.tags.split(','),
+          'passes': $scope.passes,
+          'help': $scope.help,
+          'participants': [ $rootScope.user.uid ],
+        });
+        var newId = newRef.name();
+        var ref2 = new Firebase(fbRef + '/users/' + $rootScope.user.uid);
+        ref2.child('started').push(newId);
+        ref2.child('participates').push(newId);
+        ref2.child('started').once('value', function(data) {
+          var started = data.val();
+          ref2.child('started').set(started);
+        }, function(err) {
+          console.log(err); 
+        });
+        ref2.child('participates').once('value', function(data) {
+          var participates = data.val();
+          ref2.child('participates').set(participates);
+        }, function(err) {
+          console.log(err); 
+        });
       }
       reader.readAsText(file);
+      $window.location.href='#';
     }
   }])
 	.controller('UserCtrl', ['$scope', '$rootScope', '$window', function($scope, $rootScope, $window) {
@@ -36,7 +121,6 @@ angular.module('myApp.controllers', [])
 		// Users.get(function(response) {
 		// 	$scope.data.subdata = response;
 		// });;
-    console.log("on user page: "+$rootScope.user.uid);
     var ref = new Firebase(fbRef + '/users');
     ref.child($rootScope.user.uid).once('value', function(data) {
       console.log("on user page:"+data.child('dname').val());
@@ -48,25 +132,29 @@ angular.module('myApp.controllers', [])
     });
 
     $scope.changeUserData = function() {
-      if ($scope.password0.length==0 || $scope.password1.length==0 || $scope.password2.length==0) {
-        ref.child(user.uid+'/dname').set($scope.dname);
+      if ($scope.password0 === undefined || $scope.password1 === undefined || $scope.password2 === undefined || $scope.password0.length==0 || $scope.password1.length==0 || $scope.password2.length==0) {
+        ref.child($rootScope.user.uid + '/dname').set($scope.dname);
         $window.location.href='#';
       } else {
+        ref.child($rootScope.user.uid + '/dname').set($scope.dname);
         if ($scope.password1 === $scope.password2) {
           $rootScope.authClient.changePassword($rootScope.user.email, $scope.password0, $scope.password1, function(err) {
             if (err) {
               console.log(err);
               $window.location.href='#/usercp';
             } else {
-              console.log("SUCCESS! Password changed!");
+              // SUCCESS! Password changed!
               $window.location.href='#';
             }
           });
+        } else {
+          // Passwords don't match!
+          $window.location.href='#/settings';
         }
       }
     }
 	}])
-	.controller('RegisterCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+	.controller('RegisterCtrl', ['$scope', '$rootScope', '$window', function($scope, $rootScope, $window) {
     var ref = new Firebase(fbRef + '/users');
     $rootScope.authClient = FirebaseSimpleLogin(ref, function(error, user) {
       $rootScope.user = user;
@@ -78,21 +166,20 @@ angular.module('myApp.controllers', [])
       }
       else if ($rootScope.user) {
         // user authenticated with Firebase
-        console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
-        $('a.login-button').text("Logout");
+        console.log('User ID: ' + $rootScope.user.uid + ', Provider: ' + $rootScope.user.provider);
+        // $('a.logout-button').text("Logout");
         $('p.status').text("You're logged in now!");
+        $('a.login-button').text("Logout");
+        $('li.register-button').hide();
         $rootScope.logout = function() {
           $rootScope.authClient.logout();
-          $('a.logout-button').text("Login");
+          $('a.login-button').text("Login");
+          $window.location.href='#';
         }
-        // make redirect with $window method
-        // put user inside /users
         ref.child(user.uid).set({
           "dname": $scope.dname,
-          "details_private": true,
-          "organization": "",
-          "project_owner": [],
-          "project_participant": []
+          "started": ['init'],
+          "participates": ['init'],
         });
       }
       else {
@@ -111,16 +198,15 @@ angular.module('myApp.controllers', [])
             $rootScope.authClient.login('password', {
               'email': $scope.email,
               'password': $scope.password,
-              'rememberMe': false
+              'rememberMe': false,
             });
-            $window.location.href='#';
           }
         });
       }
     }
 
 	}])
-  .controller('LoginCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+  .controller('LoginCtrl', ['$scope', '$rootScope', '$window', function($scope, $rootScope, $window) {
     var ref = new Firebase('https://classifly.firebaseio.com');
     $rootScope.authClient = FirebaseSimpleLogin(ref, function(error, user) {
       $rootScope.user = user;
@@ -133,22 +219,20 @@ angular.module('myApp.controllers', [])
       }
       else if ($rootScope.user) {
         // user authenticated with Firebase
-        console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+        console.log('User ID: ' + $rootScope.user.uid);
         $('p.status').text("You're logged in now!");
         $('a.login-button').text("Logout");
         $('li.register-button').hide();
         $window.location.href='#';
         $rootScope.logout = function() {
           $rootScope.authClient.logout();
-          $('a.logout-button').text("Login");
+          $('a.login-button').text("Login");
           $window.location.href='#';
         }
       }
       else {
-      // user is logged out
-        $window.location.href='#';
+        // user is logged out
         $('li.register-button').show();
-        $('a.login-button').text("Login");
         $('p.status').text("Logged out.");
       }
     });

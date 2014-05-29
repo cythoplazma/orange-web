@@ -1,11 +1,14 @@
 <div class="container">
-	<h3 ng-bind="data.subdata[0].name"></h3>
-	<h4>Project Details</h4>
-	<p ng-bind="data.subdata[0].description"></p>
-	
+	<h3 class="title">{{project.title|uppercase}}</h3>
+	<br>
+	<h4 class="title">Description</h4>
+	<p>{{project.description}}</p>
+	<h4 class="title">Help</h4>
+	<p>{{project.help}}</p>
+	<br>
 	<left>
-		<button type="button" class="btn btn-primary">Join Project</button>
-		<a href="#/core"><button type="button" class="btn btn-success" disabled="disabled">Start Tagging</button></a>
-		<button type="button" class="btn btn-primary" disabled="disabled">Request Data</button>
+		<a ng-href="#/project/{{projectId}}" ng-show="part" type="button" class="btn btn-success" autofocus>Continue Tagging</a>
+		<a ng-href="#/project/{{projectId}}" ng-hide="part || user==undefined" type="button" class="btn btn-success" ng-click="addUserToProject()" autofocus>Start Tagging</a>
+		<a type="button" class="btn btn-primary" disabled="disabled">Request Data</a>
 	</left>
 </div>
