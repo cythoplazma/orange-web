@@ -224,6 +224,7 @@ angular.module('myApp.controllers', [])
               'password': $scope.password,
               'rememberMe': false,
             });
+            $window.location.href='#';
           }
         });
       }

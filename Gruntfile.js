@@ -41,19 +41,18 @@ module.exports = function(grunt) {
 			build: {
 				files: {
 					'app/js/appmin.js': [
-						'bower_components/angular/angular.js',
-						'bower_components/angular-route/angular-route.js',
-						'bower_components/angular-resource/angular-resource.js',
-						'bower_components/angular-cookie/angular-cookie.min.js',
+						'bower_components/angular/angular.min.js',
+						'bower_components/angular-route/angular-route.min.js',
+						'bower_components/angular-resource/angular-resource.min.js',
 						'bower_components/firebase/firebase.js',
 						'bower_components/angularfire/angularfire.min.js',
 						'bower_components/firebase-simple-login/firebase-simple-login.js',
-						'bower_components/angular-animate/angular-animate.js',
-						'bower_components/jquery/jquery.js',
+						'bower_components/angular-animate/angular-animate.min.js',
+						'bower_components/jquery/jquery.min.js',
 						'app/js/app.js',
 						'app/js/services.js',
 						'app/js/controllers.js',
-						'app/js/bootstrap.js',
+						'app/js/bootstrap.min.js',
 						'app/js/animations.js',
 					],
 				}
@@ -69,19 +68,18 @@ module.exports = function(grunt) {
 			build: {
 				files: {
 					'app/js/appmin.js': [
-						'bower_components/angular/angular.js',
-						'bower_components/angular-route/angular-route.js',
-						'bower_components/angular-resource/angular-resource.js',
-						'bower_components/angular-cookie/angular-cookie.min.js',
+						'bower_components/angular/angular.min.js',
+						'bower_components/angular-route/angular-route.min.js',
+						'bower_components/angular-resource/angular-resource.min.js',
 						'bower_components/firebase/firebase.js',
 						'bower_components/angularfire/angularfire.min.js',
 						'bower_components/firebase-simple-login/firebase-simple-login.js',
-						'bower_components/angular-animate/angular-animate.js',
-						'bower_components/jquery/jquery.js',
+						'bower_components/angular-animate/angular-animate.min.js',
+						'bower_components/jquery/jquery.min.js',
 						'app/js/app.js',
 						'app/js/services.js',
 						'app/js/controllers.js',
-						'app/js/bootstrap.js',
+						'app/js/bootstrap.min.js',
 						'app/js/animations.js',
 					],
 				}

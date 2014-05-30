@@ -5,7 +5,7 @@
 angular.module('myApp', [
   'ngRoute',
   'firebase',
-  'myApp.services',
+  // 'myApp.services',
   'myApp.animations',
   'myApp.controllers',
 ])
