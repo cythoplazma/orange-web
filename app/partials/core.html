@@ -3,7 +3,7 @@
     <tr>
         <th>Data</th> <th>Tags</th>
     </tr>
-    <tr ng-repeat="datum in project.data.data">
-        <td>{{datum.data}}</td> <td><button class="btn btn-xs btn-default" ng-repeat="tag in project.tags" type="button" id="tag">{{tag}}</button></td>
+    <tr ng-repeat="(key, datum) in project.data.data">
+        <td>{{datum.data}}</td> <td><button data-toggle="button" class="btn btn-xs btn-default" ng-repeat="tag in project.tags" type="button" id="tag" ng-click="setTags(key,tag)">{{tag}}</button></td>
     </tr>
 </table>

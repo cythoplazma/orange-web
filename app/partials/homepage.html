@@ -18,7 +18,7 @@
                 <td ng-init="part = isParticipant(project.participants)">{{$index+1}}</td>
                 <td>{{project.title}}</td> <td>{{project.summary}}</td>
                 <td ng-show="part"><a ng-href="#/project/{{key}}">Continue</a></td>
-                <td ng-hide="part || user==undefined"><a  ng-href="#/project/{{key}}" ng-click="addUserToProject(key)">Start</a></td>
+                <td ng-hide="part || user==undefined"><a ng-href="#/project/{{key}}" ng-click="addUserToProject(key)">Start</a></td>
                 <td><a ng-href="#/project-details/{{key}}">Details</a></td>
             </tr>
         </table>

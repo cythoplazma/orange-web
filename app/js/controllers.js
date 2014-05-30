@@ -22,6 +22,30 @@ angular.module('myApp.controllers', [])
     }, function(err) {
       console.log(err); 
     });
+
+    $scope.setTags = function(key,tag) {
+      ref.child($routeParams.projectId + '/data/data').child(key + '/grades').once('value', function(data) {
+        $scope.$apply(function() {
+          var tags = data.val();
+          console.log(tags);
+          var usr = $rootScope.user.uid;
+          if (usr in tags) {
+            var idx = tags[usr].indexOf(tag);
+            if (idx == -1) tags[usr].push(tag);
+            else tags[usr].splice(idx,1);
+            ref.child($routeParams.projectId + '/data/data').child(key + '/grades/' + usr).set(tags[usr]);
+          }
+          else {
+            var newtags = [];
+            newtags.push(tag);
+            ref.child($routeParams.projectId + '/data/data').child(key + '/grades/' + usr).set(newtags);
+          } 
+          
+        });
+      }, function(err) {
+        console.log(err); 
+      });
+    }
 	}])
 	.controller('ProjectCtrl', ['$scope', '$rootScope', '$window', function($scope, $rootScope, $window) {
 		// $scope.data = {};
