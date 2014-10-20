@@ -409,7 +409,7 @@ blockquote {
   margin-bottom: 15px;
   list-style: none;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: normal;
   line-height: 1.1;
   padding-left: 0;
   margin-left: 0;
@@ -440,7 +440,7 @@ blockquote {
   color: white;
   margin-bottom: 0;
   padding-top: 1px;
-  font-weight: 400;
+  font-weight: normal;
   text-align: center;
   vertical-align: middle;
 }
@@ -567,7 +567,7 @@ blockquote {
   text-decoration: none;
 }
 .features .icon-item .content {
-  margin: 30px;
+  margin: 20px;
 }
 .features .content {
   padding: 0;
@@ -578,10 +578,10 @@ blockquote {
   margin: 10px auto;
 }
 .features .content p {
-  font-weight: 300;
+  font-weight: normal;
 }
 .overview .content p {
-  font-weight: 300;
+  font-weight: normal;
 }
 /* ======= How Section ======= */
 .how {
@@ -598,7 +598,7 @@ blockquote {
 .how .content .intro {
   margin-bottom: 30px;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: normal;
   color: #777777;
 }
 .how .content .note {
@@ -678,7 +678,7 @@ blockquote {
 }
 .faq .item .answer {
   color: #777777;
-  font-weight: 300;
+  font-weight: normal;
 }
 .faq .more {
   margin-top: 30px;
@@ -707,7 +707,7 @@ blockquote {
 }
 .story .content p {
   font-size: 16px;
-  font-weight: 300;
+  font-weight: normal;
   margin-bottom: 15px;
 }
 .story .team {
@@ -722,7 +722,7 @@ blockquote {
 }
 .story .team .member .title {
   color: #fdecd6;
-  font-weight: 300;
+  font-weight: normal;
 }
 .story .team .connect {
   color: #fff;
@@ -783,7 +783,7 @@ blockquote {
   padding: 0;
   padding-left: 20px;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: normal;
   margin-bottom: 0;
 }
 .testimonials .item .people .user-pic {
@@ -842,7 +842,7 @@ blockquote {
 }
 .contact .intro p {
   font-size: 16px;
-  font-weight: 300;
+  font-weight: normal;
 }
 .contact .intro ul {
   margin-bottom: 30px;

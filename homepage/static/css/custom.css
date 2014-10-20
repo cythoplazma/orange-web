@@ -261,3 +261,15 @@ h3.custom-accordion-title {
     padding-right: 0;
     padding-left: 0;
 }
+.custom-dl-button {
+    background-color: #f8a842;
+    border: 2px solid #DF973B;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+    border-radius: 18px;
+}
+.custom-dl-button h3, .custom-dl-button p {
+    vertical-align: middle;
+}

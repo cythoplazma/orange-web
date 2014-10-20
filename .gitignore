@@ -27,3 +27,12 @@ media/*
 
 # Ignore DB files
 *.db
+
+# Ignore work, deploy, node modules files
+homepage/filenames_mac.set
+homepage/filenames_win.set
+Gruntfile.js
+package.json
+homepage/static/homepage.min.css
+latest
+node_modules/*
