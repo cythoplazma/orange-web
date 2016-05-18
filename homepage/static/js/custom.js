@@ -50,5 +50,3 @@ jQuery(document).ready(function ($) {
 
     $(window).resize(resizeImages);
 });
-
-

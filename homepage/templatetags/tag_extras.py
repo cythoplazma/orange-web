@@ -11,6 +11,7 @@ from django.conf import settings
 
 import feedparser
 import requests
+# noinspection PyUnresolvedReferences
 from six.moves import xmlrpc_client as xmlrpclib
 
 logger = logging.getLogger(__name__)
@@ -200,14 +201,16 @@ def addonsget(searchtag):
 
 @register.inclusion_tag('download_addons.html')
 def download_addons():
-    return { "addons": addonsget("orange3 add-on") }
+    return {'addons': addonsget("orange3 add-on")}
+
 
 @register.inclusion_tag('toolbox_widgets.html')
 def toolbox_widgets():
     import json
     js = json.load(open(settings.WIDGET_CATALOG, "rt"))
-    return { "toolbox": js }
+    return {'toolbox': js}
+
 
 @register.inclusion_tag('download_addons2.html')
 def download_addons2():
-    return { "addons": addonsget("orange add-on") }
+    return {'addons': addonsget("orange add-on")}

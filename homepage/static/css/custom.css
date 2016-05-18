@@ -335,8 +335,11 @@ h3.custom-accordion-title {
     margin-left: -5px;
 }
 
-
 .list-sitemap>li {
     padding-left: 5px;
     padding-right: 5px;
+}
+
+.feature-image img {
+    width: 100%;
 }

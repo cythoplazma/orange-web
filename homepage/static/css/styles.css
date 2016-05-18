@@ -518,83 +518,65 @@ blockquote {
 .promo .iphone .flexslider .flex-control-nav {
   bottom: -50px;
 }
+
+.overview .content p {
+  font-weight: 300;
+}
+
 /* ======= Features Section ======= */
 .features {
   padding: 30px 0;
 }
-.features .title {
-  margin-bottom: 60px;
-  margin-top: 50px;
-}
+
 .features h1.title  {
-  font-size: 30px;
-  margin-bottom: 35px;
+  margin: 40px 0 10px;
 }
-.features .icon {
-  position: relative;
-  width: 90px;
-  height: 90px;
-  border: 3px solid #f8a842;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  display: table;
-  margin: 0 auto;
-  -webkit-transition: -webkit-transform ease-out 0.2s, background 0.3s;
-  -moz-transition: -moz-transform ease-out 0.2s, background 0.3s;
-  transition: transform ease-out 0.2s, background 0.3s;
-}
-.features .icon:hover {
-  background: #f8a842;
-  color: #fff;
-}
-.features .icon:hover .fa {
-  color: #fff;
-  -webkit-transform: scale(0.93);
-  -moz-transform: scale(0.93);
-  -ms-transform: scale(0.93);
-  -o-transform: scale(0.93);
-}
-.features .icon .fa {
-  color: #f8a842;
-  font-size: 48px;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
-.features .icon-item {
-  padding-top: 20px;
-}
-.features .icon-item a:active {
-  outline: none;
-  text-decoration: none;
-}
-.features .icon-item a:focus {
-  outline: none;
-  text-decoration: none;
-}
-.features .icon-item .content {
-  margin: 30px;
-}
-.features .content {
-  padding: 0;
-}
-.features .content h2.title {
-  color: #f8a842;
-  font-size: 18px;
-  margin: 10px auto;
-}
+
 .features .content p {
+  padding: 0;
   font-weight: 300;
 }
-.overview .content p {
-  font-weight: 300;
+
+.features .feature-panel {
+  padding: 20px 0;
+  margin: auto;
+  border-top: 1px solid #efeff7;
 }
+
+.features .feature-image {
+  padding-top: 40px;
+}
+
+.features .feature-image img {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+
+.features .feature-image img.left {
+  padding: 10px 40px 10px 10px;
+}
+.features .feature-image img.right {
+  padding: 10px 10px 10px 40px;
+}
+
+.features .feature-text {
+
+}
+
+.features .more a {
+  padding: 24px 0;
+  font-size: 20px;
+}
+
+.features .more .feature-link:hover {
+  text-decoration: underline;
+}
+
+.features .feature-block {
+  display: inline-block;
+}
+
 /* ======= How Section ======= */
 .how {
   background-color: #f5f5f5;
@@ -1135,6 +1117,8 @@ blockquote {
     display: block;
     margin: 0 auto;
   }
+
+
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {

@@ -1,0 +1,53 @@
+{% block feature_panel %}
+
+    <div class="feature-panel row">
+        {% if not index|divisibleby:2 %}
+            <div class="content col-sm-6 col-xs-12 feature-description pull-left">
+                <h2 class="feature-title">{{ feature.title }}</h2>
+                <p class="feature-text">{{ feature.description }}</p>
+                <div class="more">
+                    <a href="{{ feature.more_link }}">
+                        <div class="learn-more feature-block">
+                            <div class="feature-block fa fa-arrow-circle-o-right"></div>
+                            <div class="feature-block feature-link">Learn More</div>
+                        </div>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ feature.video_link }}">
+                        <div class="watch-video feature-block">
+                            <div class="feature-block fa fa-play-circle-o"></div>
+                            <div class="feature-block feature-link">Watch Video</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="content col-sm-6 col-xs-12 feature-image">
+                <img class="right" src="{{ feature.image_link }}">
+            </div>
+        {% else %}
+            <div class="content col-sm-6 col-xs-12 feature-description pull-right">
+                <h2 class="feature-title">{{ feature.title }}</h2>
+                <p class="feature-text">{{ feature.description }}</p>
+                <div class="more">
+                    <a href="{{ feature.more_link }}">
+                        <div  class="learn-more feature-block">
+                            <div class="feature-block fa fa-arrow-circle-o-right"></div>
+                            <div class="feature-block feature-link">Learn More</div>
+                        </div>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ feature.video_link }}">
+                        <div class="watch-video feature-block">
+                            <div class="feature-block fa fa-play-circle-o"></div>
+                            <div class="feature-block feature-link">Watch Video</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="content col-sm-6 col-xs-12 feature-image">
+                <img class="left" src="{{ feature.image_link }}">
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
