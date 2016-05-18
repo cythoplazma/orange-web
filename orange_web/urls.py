@@ -35,4 +35,3 @@ urlpatterns = \
                  TemplateView.as_view(template_name='docs.html'),
                  name='docs'),
              )
-

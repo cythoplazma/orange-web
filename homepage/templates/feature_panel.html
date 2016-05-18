@@ -1,0 +1,31 @@
+{% block feature_panel %}
+
+    <div class="feature-panel">
+        {% if index|divisibleby:2 %}
+            <div class="feature-panel content feature-description">
+                <h3 class="feature-title">{{ feature.title }}</h3>
+                <p class="feature-text">{{ feature.description }}</p>
+                <div class="more">
+                    <span class="learn-more"> {{ feature.more_link }}</span>
+                    <span class="watch-video">{{ feature.video_link }}</span>
+                </div>
+            </div>
+            <div class="feature-panel feature-image">
+                <img src="{{ feature.image_link }}">
+            </div>
+        {% else %}
+            <div class="feature-panel feature-image">
+                <img src="{{ feature.image_link }}">
+            </div>
+            <div class="feature-panel content feature-description">
+                <h3 class="feature-title">{{ feature.title }}</h3>
+                <p class="feature-text">{{ feature.description }}</p>
+                <div class="more">
+                    <span class="learn-more"> {{ feature.more_link }}</span>
+                    <span class="watch-video">{{ feature.video_link }}</span>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

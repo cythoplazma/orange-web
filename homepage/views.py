@@ -3,11 +3,13 @@ import random
 import re
 import requests
 import json
-import os.path
 
 from django.conf import settings
 from django.shortcuts import render
 from django.core.mail import send_mail
+
+from data import FEATURE_DESCRIPTIONS
+
 
 # Create a list of admin e-mail addresses.
 admins = [x[1] for x in settings.ADMINS]
@@ -150,7 +152,8 @@ def detect_os(user_agent):
 def index(request):
     response = {
         'random_screenshots': random.sample(screenshots, 5),
-        'os': detect_os(request.META.get('HTTP_USER_AGENT', ''))
+        'os': detect_os(request.META.get('HTTP_USER_AGENT', '')),
+        'features': FEATURE_DESCRIPTIONS
     }
     return render(request, 'homepage.html', response)
 
@@ -167,6 +170,7 @@ def download(request, os=None):
 def start(request):
     return render(request, 'start.html',
                   {'screens_root': 'homepage/getting_started'})
+
 
 def privacy(request):
     return render(request, 'privacy_policy.html', {})
