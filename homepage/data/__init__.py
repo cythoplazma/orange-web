@@ -12,7 +12,7 @@ FEATURE_DESCRIPTIONS = [
                        'them, load your datasets and harvest the insight!',
         'image_link': '/static/images/orange_naslovka_final-1.png',
         'more_link': '/feature_visual_programming/',
-        'video_link': '',
+        'video_link_tag': 'HXjnDIgGDuI',
     },
     {
         'title': 'Interactive Data Visualization',
@@ -25,7 +25,7 @@ FEATURE_DESCRIPTIONS = [
                        'attribute ranking and selections.',
         'image_link': '/static/images/orange_naslovka_final-1.png',
         'more_link': '/feature_interactive_data_visualization/',
-        'video_link': '',
+        'video_link_tag': 'HXjnDIgGDuI',
     },
     {
         'title': 'Advanced Data Mining and Machine Learning Features',
@@ -40,7 +40,7 @@ FEATURE_DESCRIPTIONS = [
                        ' core distribution with specialized widgets.',
         'image_link': '/static/images/orange_naslovka_final-1.png',
         'more_link': '/feature_advanced_data_mining_machine_learning/',
-        'video_link': '',
+        'video_link_tag': 'HXjnDIgGDuI',
     },
     {
         'title': 'Applications of Orange (Wide applicability / Broad data '
@@ -55,7 +55,7 @@ FEATURE_DESCRIPTIONS = [
                        'teaching data mining techniques.',
         'image_link': '/static/images/orange_naslovka_final-1.png',
         'more_link': '/feature_applications_orange/',
-        'video_link': '',
+        'video_link_tag': 'HXjnDIgGDuI',
     },
     {
         'title': 'Add-ons Extend Functionality',
@@ -69,6 +69,6 @@ FEATURE_DESCRIPTIONS = [
                        'analysis.',
         'image_link': '/static/images/orange_naslovka_final-1.png',
         'more_link': '/feature_addons_extend_functionality/',
-        'video_link': '',
+        'video_link_tag': 'HXjnDIgGDuI',
     }
 ]

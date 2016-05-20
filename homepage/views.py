@@ -44,9 +44,26 @@ def screens(request):
     screenshots.sort(key=lambda x: x['rank'])
     return render(request, 'screenshots.html', {'screenshots': screenshots})
 
+# Load widgets catalog, pass it to toolbox.html template
+try:
+    with open(settings.WIDGET_CATALOG, "rt") as fp:
+        widget_js = json.load(fp)
+except IOError:
+    widget_js = []
+# For use with TrieSearch in Widgets Catalog (convenience, performance util)
+widg_js = {}
+widget_idx = 0
+for field_key, field_val in widget_js:
+    for widget in field_val:
+        widg_js[widget['text']] = widget_idx
+        widget_idx += 1
+
 
 def toolbox(request):
-    return render(request, 'toolbox.html', {})
+    return render(request, 'toolbox.html', {
+        'toolbox': widget_js,
+        'toolbox_strings': json.dumps(widg_js),
+    })
 
 fl = open(settings.LICENSE_FILE)
 license_file = fl.readlines()

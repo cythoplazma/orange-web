@@ -1,4 +1,5 @@
 """Here we define custom django tags"""
+import json
 import logging
 from os import path
 
@@ -205,10 +206,8 @@ def download_addons():
 
 
 @register.inclusion_tag('toolbox_widgets.html')
-def toolbox_widgets():
-    import json
-    js = json.load(open(settings.WIDGET_CATALOG, "rt"))
-    return {'toolbox': js}
+def toolbox_widgets(widget_js):
+    return {'toolbox': widget_js}
 
 
 @register.inclusion_tag('download_addons2.html')

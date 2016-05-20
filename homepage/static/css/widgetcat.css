@@ -1,5 +1,5 @@
 #widgets li a {
-    color: #F8A842;
+    color: #E19C14;
     display: block;
 }
 
@@ -22,4 +22,8 @@
 
 #widgets ul {
     overflow: auto;
+}
+
+h2.widget-topic {
+    margin: 10px;
 }
