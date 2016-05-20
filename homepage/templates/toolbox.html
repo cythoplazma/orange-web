@@ -13,9 +13,54 @@
                     <p>Widgets are grouped into classes according to their function. A typical workflow may mix widgets for data input and filtering, visualization, and predictive data mining.</p>
                 </div>
                 <div class="col-md-8 col-sm-12 col-xs-12 content">
-                    {% toolbox_widgets %}
+                    {% toolbox_widgets toolbox %}
                 </div>
             </div>
         </div>
     </section>
+
+    <script type="text/javascript" src="{% static 'plugins/jquery-1.10.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/trieSearchWeb.js' %}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            'use strict';
+            var data_for_trie = JSON.parse("{{ toolbox_strings|escapejs }}");
+            var options = {
+                min: 1,  // Minimum length of a key to store and search. By default this is 1, but you might improve performance by using 2 or 3
+                ignoreCase: true,
+                indexField: 'index', // Defaults to undefined. If specified, determines which rows are unique when using get().
+                splitOnRegEx: /\s/g // Default regular expression to split all keys into tokens. By default this is any whitespace. Set to 'false' if you have whitespace in your keys!
+            };
+
+            // make trie and add objects
+            var trie = new window.TrieSearch('name', options);
+            trie.addFromObject(data_for_trie);
+
+            // make search
+            var results = trie.get('dist');
+            console.log(results);
+
+            // convert results to dictionary
+            var resDict = {};
+            results.forEach(function(el, idx) {
+                resDict[idx] = el
+            });
+            console.log(resDict);
+
+            // get currently displayed widgets
+            var immRes;
+            $( "li.toctree-l1" ).each(function (idx, item) {
+                immRes = resDict[idx];
+                if (immRes === undefined) {
+                    $( this ).hide();
+                }
+                else {
+                    $( this ).show();
+                }
+            });
+
+            // results.forEach(function ())
+        });
+    </script>
+
 {% endblock content %}
