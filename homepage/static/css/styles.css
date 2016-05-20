@@ -336,13 +336,17 @@ blockquote {
 /* ======= Footer ======= */
 .footer {
   background: #444444;
-  padding-top: 20px;
+  padding: 20px 0;
   color: #fff;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
   min-height: 260px;
 }
+
+/*.docs-devs {*/
+  /*padding: 0 40px;*/
+/*}*/
 
 @media (min-width: 992px) {
     .footer {
@@ -576,6 +580,60 @@ blockquote {
 .features .feature-block {
   display: inline-block;
 }
+
+/* ======= Font Awesome Icon = */
+.features .icon {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border: 3px solid #f8a842;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  display: table;
+  margin: 0 auto;
+  -webkit-transition: -webkit-transform ease-out 0.2s, background 0.3s;
+  -moz-transition: -moz-transform ease-out 0.2s, background 0.3s;
+  transition: transform ease-out 0.2s, background 0.3s;
+}
+.features .icon:hover {
+  background: #f8a842;
+  color: #fff;
+}
+.features .icon:hover .fa {
+  color: #fff;
+  -webkit-transform: scale(0.93);
+  -moz-transform: scale(0.93);
+  -ms-transform: scale(0.93);
+  -o-transform: scale(0.93);
+}
+.features .icon .fa {
+  color: #f8a842;
+  font-size: 48px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+.features .icon-item {
+  padding-top: 20px;
+}
+.features .icon-item a:active {
+  outline: none;
+  text-decoration: none;
+}
+.features .icon-item a:focus {
+  outline: none;
+  text-decoration: none;
+}
+.features .icon-item .content {
+  margin: 30px;
+}
+
 
 /* ======= How Section ======= */
 .how {
