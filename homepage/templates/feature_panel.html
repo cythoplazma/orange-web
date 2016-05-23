@@ -8,21 +8,27 @@
                 <div class="more">
                     <a href="{{ feature.more_link }}">
                         <div class="learn-more feature-block">
-                            <div class="feature-block fa fa-arrow-circle-o-right"></div>
+                            <div class="feature-block fa fa-arrow-circle-o-right jsonly"></div>
                             <div class="feature-block feature-link">Learn More</div>
                         </div>
                     </a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="{{ feature.video_link }}">
-                        <div class="watch-video feature-block">
-                            <div class="feature-block fa fa-play-circle-o"></div>
-                            <div class="feature-block feature-link">Watch Video</div>
-                        </div>
-                    </a>
+                    <div class="feature-block fake-link">
+                        <div class="feature-block fa fa-play-circle-o jsonly"></div>
+                        <div class="feature-block feature-link watch-video jsonly">Watch Video</div>
+                    </div>
+                    <noscript>
+                        <a href="https://www.youtube.com/watch?v={{ feature.video_link_tag }}">
+                            <div class="watch-video feature-block">
+                                <div class="feature-block feature-link">Watch Video</div>
+                            </div>
+                        </a>
+                    </noscript>
                 </div>
             </div>
             <div class="content col-sm-6 col-xs-12 feature-image">
-                <img class="right" src="{{ feature.image_link }}">
+                <img class="image right" src="{{ feature.image_link }}">
+                <iframe class="youtube-video" data-src="https://www.youtube.com/embed/{{ feature.video_link_tag }}" frameborder="0" allowfullscreen hidden></iframe>
             </div>
         {% else %}
             <div class="content col-sm-6 col-xs-12 feature-description pull-right">
@@ -31,21 +37,27 @@
                 <div class="more">
                     <a href="{{ feature.more_link }}">
                         <div  class="learn-more feature-block">
-                            <div class="feature-block fa fa-arrow-circle-o-right"></div>
+                            <div class="feature-block fa fa-arrow-circle-o-right jsonly"></div>
                             <div class="feature-block feature-link">Learn More</div>
                         </div>
                     </a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="{{ feature.video_link }}">
-                        <div class="watch-video feature-block">
-                            <div class="feature-block fa fa-play-circle-o"></div>
-                            <div class="feature-block feature-link">Watch Video</div>
-                        </div>
-                    </a>
+                    <div class="feature-block fake-link">
+                        <div class="feature-block fa fa-play-circle-o jsonly"></div>
+                        <div class="feature-block feature-link watch-video jsonly">Watch Video</div>
+                    </div>
+                    <noscript>
+                        <a href="{{ feature.video_link }}">
+                            <div class="watch-video feature-block">
+                                <div class="feature-block feature-link">Watch Video</div>
+                            </div>
+                        </a>
+                    </noscript>
                 </div>
             </div>
             <div class="content col-sm-6 col-xs-12 feature-image">
-                <img class="left" src="{{ feature.image_link }}">
+                <img class="image left" src="{{ feature.image_link }}">
+                <iframe class="youtube-video" data-src="https://www.youtube.com/embed/{{ feature.video_link_tag }}" frameborder="0" allowfullscreen hidden></iframe>
             </div>
         {% endif %}
     </div>

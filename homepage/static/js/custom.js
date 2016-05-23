@@ -2,11 +2,6 @@
 jQuery(document).ready(function ($) {
     'use strict';
 
-    // Allow tooltips only when using non-mobile devices
-    if (jQuery.browser.mobile === false) {
-        $('.alert').alert();
-    }
-
     function loadFBGP() {
         /* Facebook */
         if (window.location.pathname.length > 1) {
@@ -49,4 +44,26 @@ jQuery(document).ready(function ($) {
     resizeImages();
 
     $(window).resize(resizeImages);
+
+    $( "div.watch-video").click(function () {
+        // get parent block
+        var parentBlock = $( this ).parent().parent().parent().next();
+        // get width and height of parent block
+        var width = parentBlock.width();
+        var height = Math.floor(width * 0.5625);
+        // hide image
+        parentBlock.find( "img.image" ).hide();
+        // show video
+        var vid = parentBlock.find( "iframe.youtube-video");
+        vid.prop("src", function () {
+            return $( this ).data("src");
+        });
+        vid.prop("width", width);
+        vid.prop("height", height);
+        vid.show();
+
+        // disable link from being clicked again
+        $( this ).prop("disabled", true);
+
+    });
 });

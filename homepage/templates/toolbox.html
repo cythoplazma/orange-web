@@ -6,13 +6,15 @@
     <section id="features" class="features section custom-reduce-padding-2">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-sm-12 col-xs-12 content">
+                <div class="col-xs-12 content">
                     <h1 class="title">Large Toolbox</h1>
                     <p>Orange widgets are building blocks of data analysis workflows that are assembled in Orange’s visual programming environment.</p>
-                    <p><img src="/static/images/simple-workflow.png"</p>
+                    <p><img src="/static/images/simple-workflow.png"></p>
                     <p>Widgets are grouped into classes according to their function. A typical workflow may mix widgets for data input and filtering, visualization, and predictive data mining.</p>
+
+                    <input type="text" class="form-control" id="search-box" placeholder="Quick Search" autofocus="autofocus" />
                 </div>
-                <div class="col-md-8 col-sm-12 col-xs-12 content">
+                <div class="col-xs-12 content">
                     {% toolbox_widgets toolbox %}
                 </div>
             </div>
@@ -32,35 +34,13 @@
                 splitOnRegEx: /\s/g // Default regular expression to split all keys into tokens. By default this is any whitespace. Set to 'false' if you have whitespace in your keys!
             };
 
-            // make trie and add objects
+            // make trie and populate with objects objects
             var trie = new window.TrieSearch('name', options);
             trie.addFromObject(data_for_trie);
-
-            // make search
-            var results = trie.get('dist');
-            console.log(results);
-
-            // convert results to dictionary
-            var resDict = {};
-            results.forEach(function(el, idx) {
-                resDict[idx] = el
-            });
-            console.log(resDict);
-
-            // get currently displayed widgets
-            var immRes;
-            $( "li.toctree-l1" ).each(function (idx, item) {
-                immRes = resDict[idx];
-                if (immRes === undefined) {
-                    $( this ).hide();
-                }
-                else {
-                    $( this ).show();
-                }
-            });
-
-            // results.forEach(function ())
+            // save trie structure to window
+            window.trie = trie;
         });
     </script>
+    <script type="text/javascript" src="{% static 'js/trieUtil.js' %}" ></script>
 
 {% endblock content %}

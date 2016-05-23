@@ -52,9 +52,11 @@ except IOError:
     widget_js = []
 # For use with TrieSearch in Widgets Catalog (convenience, performance util)
 widg_js = {}
+widget_idx = 0
 for field_key, field_val in widget_js:
-    for idx, widget in enumerate(field_val):
-        widg_js[widget['text']] = idx
+    for widget in field_val:
+        widg_js[widget['text']] = widget_idx
+        widget_idx += 1
 
 
 def toolbox(request):

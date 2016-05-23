@@ -427,46 +427,6 @@ var HashArray = window.JClass._extend({
     return this;
   },
   //-----------------------------------
-  // Intersection, union, etc.
-  //-----------------------------------
-  /**
-   * Returns a new HashArray that contains the intersection between this (A) and the hasharray passed in (B). Returns A ^ B.
-   */
-  intersection: function (other) {
-    var self = this;
-
-    if (!other || !other.isHashArray)
-      throw Error('Cannot HashArray.intersection() on a non-hasharray object. You passed in: ', other);
-
-    var ret = this.clone(null, true),
-      allItems = this.clone(null, true).addAll(this.all.concat(other.all));
-
-    allItems.all.forEach(function (item) {
-      if (self.collides(item) && other.collides(item))
-        ret.add(item);
-    });
-
-    return ret;
-  },
-  /**
-   * Returns a new HashArray that contains the complement (difference) between this hash array (A) and the hasharray passed in (B). Returns A - B.
-   */
-  complement: function (other) {
-    var self = this;
-
-    if (!other || !other.isHashArray)
-      throw Error('Cannot HashArray.complement() on a non-hasharray object. You passed in: ', other);
-
-    var ret = this.clone(null, true);
-
-    this.all.forEach(function (item) {
-      if (!other.collides(item))
-        ret.add(item);
-    });
-
-    return ret;
-  },
-  //-----------------------------------
   // Retrieval
   //-----------------------------------
   get: function(key) {
@@ -502,109 +462,11 @@ var HashArray = window.JClass._extend({
 
     return res;
   },
-  sample: function (count, keys) {
-    // http://en.wikipedia.org/wiki/Image_(mathematics)
-    var image = this.all,
-      ixs = {},
-      res = [];
-
-    if (keys)
-      image = this.getAll(keys);
-
-    var rand = this.getUniqueRandomIntegers(count, 0, image.length - 1);
-
-    for (var i = 0; i < rand.length; i++)
-      res.push(image[rand[i]]);
-
-    return res;
-  },
   //-----------------------------------
   // Peeking
   //-----------------------------------
   has: function(key) {
     return this._map.hasOwnProperty(key);
-  },
-  collides: function (item) {
-    for (var k in this.keyFields)
-      if (this.has(this.objectAt(item, this.keyFields[k])))
-        return true;
-    
-    return false;
-  },
-  hasMultiple: function(key) {
-    return this._map[key] instanceof Array;
-  },
-  //-----------------------------------
-  // Removal
-  //-----------------------------------
-  removeByKey: function() {
-    var removed = [];
-    for (var i = 0; i < arguments.length; i++) {
-      var key = arguments[i];
-      var items = this._map[key].concat();
-      if (items) {
-        removed = removed.concat(items);
-        for (var j in items) {
-          var item = items[j];
-          for (var ix in this.keyFields) {
-            var key2 = this.objectAt(item, this.keyFields[ix]);
-            if (key2 && this._map[key2]) {
-              var ix = this._map[key2].indexOf(item);
-              if (ix != -1) {
-                this._map[key2].splice(ix, 1);
-              }
-
-              if (this._map[key2].length == 0)
-                delete this._map[key2];
-            }
-          }
-
-          this._list.splice(this._list.indexOf(item), 1);
-        }
-      }
-      delete this._map[key];
-    }
-
-    if (this.callback) {
-      this.callback('removeByKey', removed);
-    }
-    
-    return this;
-  },
-  remove: function() {
-    for (var i = 0; i < arguments.length; i++) {
-      var item = arguments[i];
-      for (var ix in this.keyFields) {
-        var key = this.objectAt(item, this.keyFields[ix]);
-        if (key) {
-          var ix = this._map[key].indexOf(item);
-          if (ix != -1)
-            this._map[key].splice(ix, 1);
-
-          if (this._map[key].length == 0)
-            delete this._map[key];
-        }
-      }
-
-      this._list.splice(this._list.indexOf(item), 1);
-    }
-
-    if (this.callback) {
-      this.callback('remove', arguments);
-    }
-    
-    return this;
-  },
-  removeAll: function() {
-    var old = this._list.concat();
-    this._map = {};
-    this._list = [];
-
-    if (this.callback) {
-      this.callback('remove', old);
-    }
-    
-    return this;
   },
   //-----------------------------------
   // Utility
@@ -647,50 +509,6 @@ var HashArray = window.JClass._extend({
     return this;
   },
   //-----------------------------------
-  // Cloning
-  //-----------------------------------
-  clone: function(callback, ignoreItems) {
-    var n = new HashArray(this.keyFields.concat(), callback ? callback : this.callback);
-    if (!ignoreItems)
-      n.add.apply(n, this.all.concat());
-    return n;
-  },
-  //-----------------------------------
-  // Mathematical
-  //-----------------------------------
-  sum: function(keys, key, weightKey) {
-    var self = this,
-      ret = 0;
-    this.forEachDeep(keys, key, function (value, item) {
-      if (weightKey !== undefined)
-        value *= self.objectAt(item, weightKey);
-
-      ret += value;
-    });
-    return ret;
-  },
-  average: function(keys, key, weightKey) {
-    var ret = 0,
-      tot = 0,
-      weightsTotal = 0,
-      self = this;
-
-    if (weightKey !== undefined)
-      this.forEachDeep(keys, weightKey, function (value) {
-        weightsTotal += value;
-      })
-
-    this.forEachDeep(keys, key, function (value, item) {
-      if (weightKey !== undefined)
-        value *= (self.objectAt(item, weightKey) / weightsTotal);
-
-      ret += value;
-      tot++;
-    });
-
-    return weightKey !== undefined ? ret : ret / tot;
-  },
-  //-----------------------------------
   // Filtering
   //-----------------------------------
   filter: function (keys, callbackOrKey) {
@@ -724,12 +542,6 @@ Object.defineProperty(HashArray.prototype, 'map', {
   }
 });
 
-//-----------------------------------
-// Browser
-//-----------------------------------
-if (typeof window !== 'undefined')
-  window.HashArray = HashArray;
-
 
 /** TrieSearch
  *
@@ -737,7 +549,6 @@ if (typeof window !== 'undefined')
  * MIT licensed, http://www.opensource.org/licenses/mit-license
  *
  */
-var HashArray = window.HashArray
 
 var MAX_CACHE_SIZE = 64;
 
