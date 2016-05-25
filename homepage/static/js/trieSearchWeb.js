@@ -581,14 +581,19 @@ TrieSearch.prototype = {
       
       val = val.toString();
 
-      val = this.options.ignoreCase ? val.toLowerCase() : val;
-
       if (this.options.splitOnRegEx !== undefined)
       {
         phrases = val.split(this.options.splitOnRegEx);
 
-        for (var i = 0, l = phrases.length; i < l; i++)
-          this.map(phrases[i], obj)
+        var i;
+        if (this.options.ignoreCase) {
+          for (i = 0, l = phrases.length; i < l; i++)
+            this.map(phrases[i].toLowerCase(), obj)
+        }
+        else {
+          for (i = 0, l = phrases.length; i < l; i++)
+            this.map(phrases[i], obj)
+        }
       }
       else this.map(val, obj);
     }

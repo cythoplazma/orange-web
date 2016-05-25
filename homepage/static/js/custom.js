@@ -45,6 +45,8 @@ jQuery(document).ready(function ($) {
 
     $(window).resize(resizeImages);
 
+    //$( "iframe.youtube-video" ).colorbox({transition: "none"});
+
     $( "div.watch-video").click(function () {
         // get parent block
         var parentBlock = $( this ).parent().parent().parent().next();
@@ -54,7 +56,7 @@ jQuery(document).ready(function ($) {
         // hide image
         parentBlock.find( "img.image" ).hide();
         // show video
-        var vid = parentBlock.find( "iframe.youtube-video");
+        var vid = parentBlock.find("iframe.youtube-video");
         vid.prop("src", function () {
             return $( this ).data("src");
         });
