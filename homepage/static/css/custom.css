@@ -63,7 +63,7 @@ h6, .h6 {
     color: #fff;
     background-color: #E19C14;
     border: solid 2px;
-    border-color: #eea236;
+    border-color: #d99614;
 }
 
 .big-button-empty {
@@ -273,7 +273,15 @@ h3.custom-accordion-title {
         padding: 25px 20px 10px 0;
         margin: 0;
     }
+
 }
+
+@media (max-width: 768px) {
+    .features .feature-panel img.image {
+        padding-top: 20px;
+    }
+}
+
 @media (min-width: 488px) {
     .download-area {
         text-align: center;

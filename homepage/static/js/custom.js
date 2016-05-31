@@ -31,6 +31,35 @@ jQuery(document).ready(function ($) {
     }
     loadFBGP();
 
+    function setYouTubeDimensions () {
+        var width = $( window ).width();
+        var height = $( window ).height();
+
+        // constants
+        var maxWidth = 720;
+        var maxHeight = 405;
+
+        // new
+        var newMaxWidth = width * 0.9;
+        var newMaxHeight = height * 0.9;
+
+        if (newMaxHeight < maxHeight * 0.9) {
+            height = Math.round(newMaxHeight);
+            width = Math.round(height * 1.7778);
+        }
+        else if (newMaxWidth < maxWidth * 0.9) {
+            width = Math.round(newMaxWidth);
+            height = Math.round(width * 0.5625);
+        }
+        else {
+            width = maxWidth;
+            height = maxHeight;
+        }
+
+        $( "a.youtube-video")
+            .colorbox({transition: "none", iframe: true, innerWidth: width, innerHeight: height});
+    }
+
     function resizeImages() {
         var pImgs = $('.features .content p img');
         pImgs.removeAttr('style');
@@ -43,29 +72,14 @@ jQuery(document).ready(function ($) {
     }
     resizeImages();
 
-    $(window).resize(resizeImages);
+    // Allow colorbox and dynamic image resizing only when using
+    // non-mobile devices
+    if (jQuery.browser.mobile === false) {
+        setYouTubeDimensions();
 
-    //$( "iframe.youtube-video" ).colorbox({transition: "none"});
-
-    $( "div.watch-video").click(function () {
-        // get parent block
-        var parentBlock = $( this ).parent().parent().parent().next();
-        // get width and height of parent block
-        var width = parentBlock.width();
-        var height = Math.floor(width * 0.5625);
-        // hide image
-        parentBlock.find( "img.image" ).hide();
-        // show video
-        var vid = parentBlock.find("iframe.youtube-video");
-        vid.prop("src", function () {
-            return $( this ).data("src");
+        $(window).on('resize', function () {
+            resizeImages();
+            setYouTubeDimensions();
         });
-        vid.prop("width", width);
-        vid.prop("height", height);
-        vid.show();
-
-        // disable link from being clicked again
-        $( this ).prop("disabled", true);
-
-    });
+    }
 });
