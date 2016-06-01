@@ -8,7 +8,7 @@ from django.conf import settings
 from django.shortcuts import render
 from django.core.mail import send_mail
 
-from data import FEATURE_DESCRIPTIONS
+from homepage.data import FEATURE_DESCRIPTIONS
 
 
 # Create a list of admin e-mail addresses.
@@ -41,7 +41,7 @@ screenshots = [screen for screen in discover_screenshots()
 
 def screens(request):
     """Sort screenshots by their rank"""
-    screenshots.sort(key=lambda x: x['rank'])
+    screenshots.sort(key=lambda a: a['rank'])
     return render(request, 'screenshots.html', {'screenshots': screenshots})
 
 # Load widgets catalog, pass it to toolbox.html template
