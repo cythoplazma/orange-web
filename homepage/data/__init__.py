@@ -43,8 +43,7 @@ FEATURE_DESCRIPTIONS = [
         'video_link_tag': 'HXjnDIgGDuI',
     },
     {
-        'title': 'Applications of Orange (Wide applicability / Broad data '
-                 'analysis tool)',
+        'title': 'Wide Applicability',
         'description': 'Orange can be used for a broad variety of tasks. Its '
                        'intuitive interface makes it a great business '
                        'intelligence tool for market forecasting, risk '

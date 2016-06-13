@@ -5,7 +5,7 @@
     <section id="features" class="features section custom-reduce-padding-2">
         <div class="container">
             <div class="row">
-                <!--
+                {% comment %}
                  START EDITING HERE!
 
                  INSTRUCTIONS FOR USING THIS TEMPLATE
@@ -16,13 +16,10 @@
                  2. URL stub for this webpage is predefined in urls.py
                  3. As soon as you change content in this template, it
                     will be enabled on Django's restart.
-                -->
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <h1 class="title">Add-ons Extend Functionality</h1>
-                </div>
-
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                {% endcomment %}
+                <div class="col-xs-12">
                     <div class="content">
+                        <h1 class="title">Add-ons Extend Functionality</h1>
 
                         <h3 class="custom-reduce-padding">Subtitle 1</h3>
                         <p>
@@ -40,12 +37,12 @@
                         </p>
 
                         <div class="feature-page video-content">
-                            <!-- VIDEO HERE -->
+                            {% comment %} VIDEO HERE {% endcomment %}
                         </div>
                     </div>
                 </div>
 
-                <!-- END EDITING HERE! -->
+                {% comment %} END EDITING HERE! {% endcomment %}
             </div><!--//row-->
         </div><!--//container-->
     </section><!--//features-->

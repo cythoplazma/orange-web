@@ -5,7 +5,7 @@
     <section id="features" class="features section custom-reduce-padding-2">
         <div class="container">
             <div class="row">
-                <!--
+                {% comment %}
                  START EDITING HERE!
 
                  INSTRUCTIONS FOR USING THIS TEMPLATE
@@ -16,25 +16,22 @@
                  2. URL stub for this webpage is predefined in urls.py
                  3. As soon as you change content in this template, it
                     will be enabled on Django's restart.
-                -->
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <h1 class="title">Visual Programming</h1>
-                </div>
-
-                <div>
-                Orange is a great data mining tool for complete beginners as well as for expert data scientists. Its graphic user interface allows the users to focus on data analysis instead on laborious coding, making a construction of complex data analytics workflows extremely simple. Most of Orange's visualisations are interactive and support data selection and filtering.    
-                </div>
-
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                {% endcomment %}
+                <div class="col-xs-12">
                     <div class="content">
+                        <h1 class="title">Visual Programming</h1>
+                        <p>
+                            Orange is a great data mining tool for complete beginners as well as for expert data scientists. Its graphic user interface allows the users to focus on data analysis instead on laborious coding, making a construction of complex data analytics workflows extremely simple. Most of Orange's visualisations are interactive and support data selection and filtering.
+                        </p>
 
                         <h3 class="custom-reduce-padding">Component Based Software</h3>
                         <p>
                         You can easily perform data analysis by stacking components into schematic workflows. Each component embeds some data retrieval, preprocessing, visualisation, modelling or evaluation step in your data research. Combining different components (widgets) in a workflow enables you to build comprehensive data analysis schemas as you go. With a large library of preloaded widgets you won't be short for choice. Additional widgets are available through add-ons and allow for a more focused and topic-oriented research.
                         </p>
+
                         <p>
                         <img src="/static/images/workflow_screenshot.png">
-                            <!-- Content goes here. Don't forget to include the <a href="{% url 'download' %}">Download</a> link.!-->
+                            {% comment %}Content goes here. Don't forget to include the \<a href="{% url 'download' %}"\>Download\</a\> link.{% endcomment %}
                         </p>
 
                         <h3 class="custom-reduce-padding">Interactive Data Exploration</h3>
@@ -56,12 +53,12 @@
                         </p>
 
                         <div class="feature-page video-content">
-                            <!-- VIDEO HERE -->
+                            {% comment %} VIDEO HERE {% endcomment %}
                         </div>
                     </div>
                 </div>
 
-                <!-- END EDITING HERE! -->
+                {% comment %} END EDITING HERE! {% endcomment %}
             </div><!--//row-->
         </div><!--//container-->
     </section><!--//features-->

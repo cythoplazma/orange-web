@@ -5,7 +5,7 @@
     <section id="features" class="features section custom-reduce-padding-2">
         <div class="container">
             <div class="row">
-                <!--
+                {% comment %}
                  START EDITING HERE!
 
                  INSTRUCTIONS FOR USING THIS TEMPLATE
@@ -16,22 +16,20 @@
                  2. URL stub for this webpage is predefined in urls.py
                  3. As soon as you change content in this template, it
                     will be enabled on Django's restart.
-                -->
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <h1 class="title">Interactive Data Visualization</h1>
-                </div>
-
-                <div class="content">
-                Orange is all about interactive data visualization that helps you to uncover hidden data patterns, provides intuition behind data analysis or supports any communication with data scientists and domain experts. Visualization widgets include scatter plot, box plot, histogram, hierarchical clustering (dendrogram), MDS and Venn diagram, just to mention a few. Users can, however, extend on this selection with specialized add-ons, that include visualizations of networks, word clouds, geographical maps, and more.    
-                </div>
-
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                {% endcomment %}
+                <div class="col-xs-12">
                     <div class="content">
+                        <h1 class="title">Interactive Data Visualization</h1>
+
+                        <p>
+                            Orange is all about interactive data visualization that helps you to uncover hidden data patterns, provides intuition behind data analysis or supports any communication with data scientists and domain experts. Visualization widgets include scatter plot, box plot, histogram, hierarchical clustering (dendrogram), MDS and Venn diagram, just to mention a few. Users can, however, extend on this selection with specialized add-ons, that include visualizations of networks, word clouds, geographical maps, and more.
+                        </p>
+
 
                         <h3 class="custom-reduce-padding">Great Visualizations</h3>
                         <p>
                         Plot your data to uncover underlying patterns or relationships between attributes. Scatter plot is great for visualizing correlations between attributes, box plot for displaying basic statistics, hierarchical clustering and k-means for discovery of groups, MDS for plotting the multinomial data in 2D, silhouette plot for revealing the quality of clusters, classification trees for visualizing relevant features, nomograms for representation of linear models and ROC analysis for model evaluation.
-                            <!-- Content goes here. Don't forget to include the <a href="{% url 'download' %}">Download</a> link. !-->
+                            {% comment %}Content goes here. Don't forget to include the \<a href="{% url 'download' %}"\>Download\</a\> link.{% endcomment %}
                         </p>
 
                         <p>
@@ -57,12 +55,12 @@
                         </p>
 
                         <div class="feature-page video-content">
-                            <!-- VIDEO HERE -->
+                            {% comment %} VIDEO HERE {% endcomment %}
                         </div>
                     </div>
                 </div>
 
-                <!-- END EDITING HERE! -->
+                {% comment %} END EDITING HERE! {% endcomment %}
             </div><!--//row-->
         </div><!--//container-->
     </section><!--//features-->
