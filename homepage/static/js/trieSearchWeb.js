@@ -581,6 +581,15 @@ TrieSearch.prototype = {
       
       val = val.toString();
 
+      // add without splitting first
+      if (this.options.ignoreCase) {
+        this.map(val.toLowerCase(), obj);
+      }
+      else {
+        this.map(val, obj);
+      }
+
+      // possible regex split
       if (this.options.splitOnRegEx !== undefined)
       {
         phrases = val.split(this.options.splitOnRegEx);

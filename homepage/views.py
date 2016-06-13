@@ -55,7 +55,12 @@ widg_js = {}
 widget_idx = 0
 for field_key, field_val in widget_js:
     for widget in field_val:
+        # Widget name
         widg_js[widget['text']] = widget_idx
+        # Widget keywords
+        for keyword in widget['keywords']:
+            print keyword
+            widg_js[keyword] = widget_idx
         widget_idx += 1
 
 

@@ -1,7 +1,14 @@
 /* ======= Trie search event handler ======= */
 jQuery(document).ready(function ($) {
+    var searchBox = $( "#search-box" );
+
+    // on widget search box focus, scroll to it
+    searchBox.focus(function () {
+        $(document).scrollTop( $(this).offset().top - $( "header" ).height() - 70 );
+    });
+
     // monitor text input
-    $( "#search-box" ).keyup(function () {
+    searchBox.keyup(function () {
         // trigger input text retrieval
         var textval = $( this ).context.value;
         // get all widget h2s and lis
