@@ -545,9 +545,10 @@ blockquote {
 }
 
 .features .feature-image img {
+  display: block;
   margin-right: auto;
   margin-left: auto;
-  width: 100%;
+  max-height: 300px;
 }
 
 .features .feature-image img.left {
@@ -558,11 +559,11 @@ blockquote {
 }
 
 .features .panel-left {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .features .panel-right {
-    padding-right: 0;
+  padding-right: 0;
 }
 
 .features .more a {

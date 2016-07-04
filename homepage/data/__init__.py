@@ -10,7 +10,7 @@ FEATURE_DESCRIPTIONS = [
                        ' fast prototyping of a data analysis workflow '
                        'extremely easy. Place widgets on the canvas, connect '
                        'them, load your datasets and harvest the insight!',
-        'image_link': '/static/images/orange_naslovka_final-1.png',
+        'image_link': '/static/images/visual_programming_01_scaled.png',
         'more_link': '/feature_visual_programming/',
         'video_link_tag': 'HXjnDIgGDuI',
     },
@@ -23,7 +23,7 @@ FEATURE_DESCRIPTIONS = [
                        'linear projections. Even your multidimensional data '
                        'can become sensible in 2D, especially with clever '
                        'attribute ranking and selections.',
-        'image_link': '/static/images/orange_naslovka_final-1.png',
+        'image_link': '/static/images/interactive_data_vis_01_scaled.png',
         'more_link': '/feature_interactive_data_visualization/',
         'video_link_tag': 'HXjnDIgGDuI',
     },
@@ -38,7 +38,7 @@ FEATURE_DESCRIPTIONS = [
                        'forecasting. Integration with SQL provides easy access'
                        ' to large databases, while numerous add-ons extend the'
                        ' core distribution with specialized widgets.',
-        'image_link': '/static/images/orange_naslovka_final-1.png',
+        'image_link': '/static/images/iadv_data_mining_02_scaled.png',
         'more_link': '/feature_advanced_data_mining_machine_learning/',
         'video_link_tag': 'HXjnDIgGDuI',
     },
@@ -52,7 +52,7 @@ FEATURE_DESCRIPTIONS = [
                        'bioinformatics research. And due to its intelligible '
                        'visualizations, it is also a wonderful tool for '
                        'teaching data mining techniques.',
-        'image_link': '/static/images/orange_naslovka_final-1.png',
+        'image_link': '/static/images/iadv_data_mining_02_scaled.png',
         'more_link': '/feature_applications_orange/',
         'video_link_tag': 'HXjnDIgGDuI',
     },
@@ -66,7 +66,7 @@ FEATURE_DESCRIPTIONS = [
                        'molecular biologists can use Orange to rank genes by '
                        'their differential expression and perform enrichment '
                        'analysis.',
-        'image_link': '/static/images/orange_naslovka_final-1.png',
+        'image_link': '/static/images/add_ons_scaled.png',
         'more_link': '/feature_addons_extend_functionality/',
         'video_link_tag': 'HXjnDIgGDuI',
     }
