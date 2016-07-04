@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^community/$',
         TemplateView.as_view(template_name='community.html'),
         name='community'),
+    url(r'^version/$', views.latest_version, name='version'),
     url(r'^citation/$',
         TemplateView.as_view(template_name='citation.html'),
         name='citation'),
