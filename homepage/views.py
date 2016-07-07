@@ -7,25 +7,25 @@ from django.conf import settings
 from django.shortcuts import render
 from django.core.mail import send_mail
 
-from homepage.data import FEATURE_DESCRIPTIONS
-from orange_web.resources import screenshots
-from orange_web.resources import widget_js
-from orange_web.resources import widg_js
-from orange_web.resources import license_file
-from orange_web.resources import admins
-from orange_web.resources import testimonials_js
+from orange_web.resources import FEATURE_DESCRIPTIONS
+from orange_web.resources import SCREENSHOTS
+from orange_web.resources import WIDGET_JS
+from orange_web.resources import WIDG_JS
+from orange_web.resources import LICENSE
+from orange_web.resources import ADMINS
+from orange_web.resources import TESTIMONIALS
 
 
 def screens(request):
     """Sort screenshots by their rank"""
-    screenshots.sort(key=lambda a: a['rank'])
-    return render(request, 'screenshots.html', {'screenshots': screenshots})
+    SCREENSHOTS.sort(key=lambda a: a['rank'])
+    return render(request, 'screenshots.html', {'screenshots': SCREENSHOTS})
 
 
 def toolbox(request):
     return render(request, 'toolbox.html', {
-        'toolbox': widget_js,
-        'toolbox_strings': json.dumps(widg_js),
+        'toolbox': WIDGET_JS,
+        'toolbox_strings': json.dumps(WIDG_JS),
     })
 
 
@@ -33,7 +33,7 @@ def license_page(request):
     text = ''
     in_other = False
     other = []
-    for l in license_file:
+    for l in LICENSE:
         if l.startswith('----'):
             in_other = not in_other
             if in_other:
@@ -84,7 +84,7 @@ def contribute(request):
                                                   rp.get('Country'),
                                                   rp.get('Number'))
             send_mail('Orange Contributor License Agreement Receipt', message,
-                      rp.get('E-mail'), admins, fail_silently=True)
+                      rp.get('E-mail'), ADMINS, fail_silently=True)
             response['post'] = 1
     return render(request, 'contributing-to-orange.html', response)
 
@@ -102,7 +102,7 @@ def contact(request):
                                                   rp.get('Subject'),
                                                   rp.get('Message'))
             send_mail('Orange Contact Request', message,
-                      rp.get('E-mail'), admins, fail_silently=True)
+                      rp.get('E-mail'), ADMINS, fail_silently=True)
             response['post'] = 1
         else:
             response['post'] = -1
@@ -127,10 +127,10 @@ def detect_os(user_agent):
 
 def index(request):
     response = {
-        'random_screenshots': random.sample(screenshots, 5),
+        'random_screenshots': random.sample(SCREENSHOTS, 5),
         'os': detect_os(request.META.get('HTTP_USER_AGENT', '')),
         'features': FEATURE_DESCRIPTIONS,
-        'testimonials': random.sample(testimonials_js, 3),
+        'testimonials': random.sample(TESTIMONIALS, 3),
     }
     return render(request, 'homepage.html', response)
 
