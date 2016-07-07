@@ -1,0 +1,12 @@
+<div id="testimonial-list">
+    <p>I'm here</p>
+    <ul>
+    {% for testimonial in testimonials %}
+        <li>
+            <img src="{{ testimonial.img }}">
+            <p>{{ testimonial.title }} bleee</p>
+            <p>{{ testimonial.text }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+</div>

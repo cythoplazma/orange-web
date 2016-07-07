@@ -213,3 +213,8 @@ def toolbox_widgets(widget_js):
 @register.inclusion_tag('download_addons2.html')
 def download_addons2():
     return {'addons': addonsget("orange add-on")}
+
+
+@register.inclusion_tag('testimonials.html')
+def testimonials_tag(data):
+    return {'testimonials': data}
