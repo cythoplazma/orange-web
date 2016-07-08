@@ -22,9 +22,7 @@
                     <div class="phone iphone col-lg-8 col-md-7 col-sm-6 col-xs-12 pull-right">
                         <div class="iphone-holder phone-holder">
                             <div class="iphone-holder-inner">
-                                    <a href="#" title="Orange Data Mining">
-                                        <img style="width: 100%;" alt="Orange Data Mining" src="/static/images/orange_title_scaled.png">
-                                    </a>
+                                <img class="landing-image" alt="Orange Data Mining" src="/static/images/orange_title_scaled.png">
                             </div><!--//iphone-holder-inner-->
                         </div><!--//iphone-holder-->
                     </div><!--//iphone-->
@@ -44,7 +42,6 @@
 							<div class="content">
                                 <p style="margin-top:6px">The <a id="orange2-link" href="/orange2/">old version</a>, Orange 2.7, is still available.</p>
                             </div><!--//content-->
-
                     </div>
 
                 </div><!--//overview-->
@@ -64,9 +61,7 @@
 
     <!-- ******TESTIMONIALS****** -->
     <section id="testimonials" class="features section">
-        <div class="container">
-            {% testimonials_tag testimonials %}
-        </div>
+        {% testimonials_tag testimonials %}
     </section><!--//testimonials-->
 
 {% endblock content %}

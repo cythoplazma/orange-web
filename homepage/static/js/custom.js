@@ -72,14 +72,21 @@ jQuery(document).ready(function ($) {
     }
     resizeImages();
 
+    function disableDownloadButton() {
+        $( "#main-page-download-button" ).parent().hide(0);
+    }
+
     // Allow colorbox and dynamic image resizing only when using
     // non-mobile devices
-    if (jQuery.browser.mobile === false) {
+    if (!jQuery.browser.mobile) {
         setYouTubeDimensions();
 
         $(window).on('resize', function () {
             resizeImages();
             setYouTubeDimensions();
         });
+    }
+    else {
+        disableDownloadButton();
     }
 });
