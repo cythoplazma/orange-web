@@ -280,6 +280,12 @@ h3.custom-accordion-title {
     .features .feature-panel img.image {
         padding-top: 20px;
     }
+    .landing-image {
+        display: block;
+        float: left;
+        width: 100%;
+        max-width: 550px;
+    }
 }
 
 @media (min-width: 488px) {
@@ -350,12 +356,57 @@ h3.custom-accordion-title {
     padding-right: 5px;
 }
 
-.feature-image img {
-    width: 100%;
-}
-
 .docs-image {
     width: 100%;
     padding: 20px;
     margin: 0 auto;
+}
+
+#testimonials h2 {
+    text-align: center;
+}
+
+.testimonial-list {
+    padding-bottom:20px;
+}
+
+.testimonial-list .item {
+    list-style-type: none;
+    padding: 20px 0;
+}
+
+.testimonial-list .img-container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.testimonial-list img {
+    width: 160px;
+}
+
+.testimonial-list .item {
+    padding-right: 20px;
+}
+
+.testimonial-list .item .item-title {
+    text-align: center;
+    padding-top:0;
+}
+
+.testimonial-list .item .feature-text {
+    text-align: center;
+}
+
+.testimonial-list .item i.extra {
+    font-size: 13px;
+    color: #3c3c3c;
+    font-weight: normal;
+}
+
+.landing-image {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 550px;
 }

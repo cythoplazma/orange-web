@@ -1,5 +1,4 @@
 """Here we define custom django tags"""
-import json
 import logging
 from os import path
 
@@ -89,8 +88,9 @@ def download_choices(os='win'):
             if key == 'MAC_ORANGE3_DAILY':
                 downloads['bundle-orange3'] = value
                 try:
-                    downloads['version'] = re.findall("Orange3-(.*)\.dmg", value)[0]
-                except:
+                    downloads['version'] = \
+                        re.findall("Orange3-(.*)\.dmg", value)[0]
+                except IndexError:  
                     downloads['version'] = 'unknown'
     else:
         for key, value in download_set_patterns('win'):
@@ -218,3 +218,8 @@ def toolbox_widgets(widget_js):
 @register.inclusion_tag('download_addons2.html')
 def download_addons2():
     return {'addons': addonsget("orange add-on")}
+
+
+@register.inclusion_tag('testimonials.html')
+def testimonials_tag(data):
+    return {'testimonials': data}

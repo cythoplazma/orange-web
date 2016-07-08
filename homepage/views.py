@@ -1,4 +1,3 @@
-import xml.dom.minidom
 import random
 import re
 import requests
@@ -9,78 +8,35 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.mail import send_mail
 
-from homepage.data import FEATURE_DESCRIPTIONS
 from homepage.templatetags.tag_extras import download_choices
 
-# Create a list of admin e-mail addresses.
-admins = [x[1] for x in settings.ADMINS]
-
-
-def discover_screenshots():
-    f = open(settings.SCREENSHOTS_INDEX)
-    doc = xml.dom.minidom.parse(f)
-    f.close()
-
-    s_shots = []
-    for node in doc.getElementsByTagName('screenshot'):
-        iid = node.getAttribute('id')
-        s_shot = {
-            'id': iid,
-            'title': node.getAttribute('title'),
-            'hide': node.getAttribute('hide'),
-            'img': 'homepage/screenshots/images/%s.png' % iid,
-            'rank': int(node.getAttribute('rank') or 999),
-            'thumb': 'homepage/screenshots/images/%s-thumb.png' % iid,
-            'features': node.getAttribute('features'),
-        }
-        s_shots.append(s_shot)
-    return s_shots
-
-screenshots = [screen for screen in discover_screenshots()
-               if not screen['hide'] == 'yes']
+from orange_web.resources import FEATURE_DESCRIPTIONS
+from orange_web.resources import SCREENSHOTS
+from orange_web.resources import WIDGET_JS
+from orange_web.resources import WIDG_JS
+from orange_web.resources import LICENSE
+from orange_web.resources import ADMINS
+from orange_web.resources import TESTIMONIALS
 
 
 def screens(request):
     """Sort screenshots by their rank"""
-    screenshots.sort(key=lambda a: a['rank'])
-    return render(request, 'screenshots.html', {'screenshots': screenshots})
-
-# Load widgets catalog, pass it to toolbox.html template
-try:
-    with open(settings.WIDGET_CATALOG, "rt") as fp:
-        widget_js = json.load(fp)
-except IOError:
-    widget_js = []
-# For use with TrieSearch in Widgets Catalog (convenience, performance util)
-widg_js = {}
-widget_idx = 0
-for field_key, field_val in widget_js:
-    for widget in field_val:
-        # Widget name
-        widg_js[widget['text']] = widget_idx
-        # Widget keywords
-        for keyword in widget['keywords']:
-            print keyword
-            widg_js[keyword] = widget_idx
-        widget_idx += 1
+    SCREENSHOTS.sort(key=lambda a: a['rank'])
+    return render(request, 'screenshots.html', {'screenshots': SCREENSHOTS})
 
 
 def toolbox(request):
     return render(request, 'toolbox.html', {
-        'toolbox': widget_js,
-        'toolbox_strings': json.dumps(widg_js),
+        'toolbox': WIDGET_JS,
+        'toolbox_strings': json.dumps(WIDG_JS),
     })
 
-fl = open(settings.LICENSE_FILE)
-license_file = fl.readlines()
-fl.close()
 
-
-def license(request):
+def license_page(request):
     text = ''
     in_other = False
     other = []
-    for l in license_file:
+    for l in LICENSE:
         if l.startswith('----'):
             in_other = not in_other
             if in_other:
@@ -131,7 +87,7 @@ def contribute(request):
                                                   rp.get('Country'),
                                                   rp.get('Number'))
             send_mail('Orange Contributor License Agreement Receipt', message,
-                      rp.get('E-mail'), admins, fail_silently=True)
+                      rp.get('E-mail'), ADMINS, fail_silently=True)
             response['post'] = 1
     return render(request, 'contributing-to-orange.html', response)
 
@@ -149,7 +105,7 @@ def contact(request):
                                                   rp.get('Subject'),
                                                   rp.get('Message'))
             send_mail('Orange Contact Request', message,
-                      rp.get('E-mail'), admins, fail_silently=True)
+                      rp.get('E-mail'), ADMINS, fail_silently=True)
             response['post'] = 1
         else:
             response['post'] = -1
@@ -174,9 +130,10 @@ def detect_os(user_agent):
 
 def index(request):
     response = {
-        'random_screenshots': random.sample(screenshots, 5),
+        'random_screenshots': random.sample(SCREENSHOTS, 5),
         'os': detect_os(request.META.get('HTTP_USER_AGENT', '')),
-        'features': FEATURE_DESCRIPTIONS
+        'features': FEATURE_DESCRIPTIONS,
+        'testimonials': TESTIMONIALS[:3],
     }
     return render(request, 'homepage.html', response)
 

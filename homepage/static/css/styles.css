@@ -295,7 +295,7 @@ blockquote {
   background-color: #fff;
 }
 .header .main-nav .nav .nav-item {
-  font-weight: normal;
+  font-weight: 300;
   /*text-transform: uppercase;*/
   font-size: 18px;
   margin-right: 0;
@@ -545,24 +545,26 @@ blockquote {
 }
 
 .features .feature-image img {
+  display: block;
   margin-right: auto;
   margin-left: auto;
-  width: 100%;
+  max-height: 300px;
+  max-width: 100%;
 }
 
 .features .feature-image img.left {
-  padding: 0 40px 10px 10px;
+  padding: 0 40px 10px 0;
 }
 .features .feature-image img.right {
-  padding: 0 10px 10px 40px;
+  padding: 0 10px 10px 0;
 }
 
 .features .panel-left {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .features .panel-right {
-    padding-right: 0;
+  padding-right: 0;
 }
 
 .features .more a {
@@ -760,185 +762,7 @@ blockquote {
 .faq .more .btn .fa {
   margin-left: 5px;
 }
-/* ======= Story Section ======= */
-.story {
-  background-color: #E19C14;
-  color: #fff;
-  padding: 80px 0;
-}
-.story .content .title {
-  margin-bottom: 30px;
-  margin-top: 0;
-}
-.story .content p {
-  font-size: 16px;
-  font-weight: 300;
-  margin-bottom: 15px;
-}
-.story .team {
-  font-size: 16px;
-}
-.story .team .member img {
-  margin-bottom: 15px;
-}
-.story .team .member .name {
-  color: #9b5a06;
-  margin-bottom: 0;
-}
-.story .team .member .title {
-  color: #fdecd6;
-  font-weight: 300;
-}
-.story .team .connect {
-  color: #fff;
-  font-size: 26px;
-}
-.story .team .connect a {
-  color: #cc7608;
-}
-.story .team .connect a:hover {
-  color: #834b05;
-}
-/* ======= Testimonials Section ======= */
-.testimonials {
-  padding: 80px 0;
-}
-.testimonials .title {
-  margin-bottom: 60px;
-}
-.testimonials .item {
-  margin-bottom: 30px;
-}
-.testimonials .item .quote-box {
-  background: #f5f5f5;
-  padding: 30px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  border-top: 3px solid #fdecd6;
-  position: relative;
-  margin-bottom: 23px;
-}
-.testimonials .item .quote-box .fa {
-  color: #E19C14;
-  font-size: 18px;
-  position: absolute;
-  left: 30px;
-  top: 20px;
-}
-.testimonials .item .quote-box:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid #f5f5f5;
-  position: absolute;
-  bottom: -10px;
-  left: 55px;
-}
-.testimonials .item .quote {
-  border: none;
-  padding: 0 0 0 20px;
-  font-size: 16px;
-  font-weight: 300;
-  margin-bottom: 0;
-}
-.testimonials .item .people .user-pic {
-  max-width: 60px;
-  max-height: 60px;
-}
-.testimonials .item .people .user-pic,
-.testimonials .item .people .user-pic *,
-.testimonials .item .people .user-pic *:before,
-.testimonials .item .people .user-pic *:after {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-}
-.testimonials .item .people .name {
-  display: block;
-}
-.testimonials .item .people .title {
-  display: block;
-  color: #999999;
-}
-.testimonials .press .note {
-  color: #E19C14;
-  margin-bottom: 30px;
-}
-.testimonials .press li {
-  margin-right: 30px;
-  margin-bottom: 30px;
-}
-.testimonials .press li.last {
-  margin-right: 0;
-}
-.testimonials .press li a img {
-  -webkit-opacity: 0.6;
-  -moz-opacity: 0.6;
-  opacity: 0.6;
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-}
-.testimonials .press li a:hover img {
-  -webkit-opacity: 1;
-  -moz-opacity: 1;
-  opacity: 1;
-}
-/* ======= Contact Section ======= */
-.contact {
-  background-color: #E19C14;
-  color: #fff;
-  padding: 80px 0;
-}
-.contact .title {
-  margin-bottom: 30px;
-  margin-top: 0;
-}
-.contact .intro p {
-  font-size: 16px;
-  font-weight: 300;
-}
-.contact .intro ul {
-  margin-bottom: 30px;
-  margin-top: 30px;
-}
-.contact .intro li {
-  margin-bottom: 10px;
-  color: #cc7608;
-  font-size: 16px;
-}
-.contact .intro li .fa {
-  margin-right: 10px;
-}
-.contact .intro li a {
-  color: #cc7608;
-}
-.contact .intro li a:hover {
-  color: #9b5a06;
-}
-.contact .contact-form .form-control {
-  border-color: #fff;
-  height: auto;
-  padding: 10px 15px;
-}
-.contact .contact-form .btn-theme {
-  background-color: #cc7608;
-  margin-top: 15px;
-}
-.contact .social-icons {
-  display: inline-block;
-  margin: 60px auto 0 auto;
-}
+
 /* ======= Configure Style ======= */
 .config-wrapper {
   position: absolute;
@@ -1082,7 +906,6 @@ blockquote {
   }
   .promo .phone {
     margin: 30px 0 0;
-    text-align: center;
   }
   .promo .phone .phone-holder {
     width: auto;
@@ -1166,7 +989,6 @@ blockquote {
   }
   .promo .phone {
     margin: 30px 0 0;
-    text-align: left;
   }
   .promo .phone .phone-holder {
     width: auto;
@@ -1197,7 +1019,6 @@ blockquote {
   }
   .promo .phone {
     margin: 30px 0 0;
-    text-align: left;
   }
   .promo .ipad {
     text-align: left;
@@ -1218,7 +1039,6 @@ blockquote {
     text-align: left;
   }
   .promo .phone {
-    text-align: left;
   }
   .promo .ipad {
     text-align: left;
@@ -1239,7 +1059,6 @@ blockquote {
     text-align: left;
   }
   .promo .phone {
-    text-align: left;
   }
   .promo .ipad {
     text-align: left;
