@@ -130,7 +130,7 @@ def index(request):
         'random_screenshots': random.sample(SCREENSHOTS, 5),
         'os': detect_os(request.META.get('HTTP_USER_AGENT', '')),
         'features': FEATURE_DESCRIPTIONS,
-        'testimonials': random.sample(TESTIMONIALS, 3),
+        'testimonials': TESTIMONIALS[:3],
     }
     return render(request, 'homepage.html', response)
 
