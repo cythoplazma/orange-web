@@ -340,6 +340,10 @@ blockquote {
   min-height: 260px;
 }
 
+/*.docs-devs {*/
+  /*padding: 0 40px;*/
+/*}*/
+
 @media (min-width: 992px) {
     .footer {
         position: absolute;
