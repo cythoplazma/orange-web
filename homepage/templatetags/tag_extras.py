@@ -45,11 +45,10 @@ def grab_feed_all():
 
 def download_set_patterns(os=None):
     if path.isdir(settings.DOWNLOAD_DIR):
-        if os is None:
+        if not os:
             filename = path.join(settings.DOWNLOAD_DIR, "filenames.set")
         else:
             filename = settings.DOWNLOAD_SET_PATTERN % os
-
         if not path.isfile(filename):
             return
 
@@ -76,12 +75,12 @@ def download_choices(os='win'):
                 downloads['source'] = value
 
         for key, value in download_set_patterns(None):
-            if key == "WIN32_ORANGE3_DAILY":
-                downloads["orange3-win32-installer"] = value
-            elif key == "WIN32_ORANGE3_STANDALONE_DAILY":
-                downloads["orange3-win32-installer-standallone"] = value
+            if key == 'WIN32_ORANGE3_DAILY':
+                downloads['orange3-win32-installer'] = value
+            elif key == 'WIN32_ORANGE3_STANDALONE_DAILY':
+                downloads['orange3-win32-installer-standallone'] = value
 
-    elif os == "mac":
+    elif os == 'mac':
         for key, value in download_set_patterns(os):
             if key == 'MAC_DAILY':
                 downloads['mac'] = value
@@ -90,7 +89,7 @@ def download_choices(os='win'):
                 try:
                     downloads['version'] = \
                         re.findall("Orange3-(.*)\.dmg", value)[0]
-                except IndexError:  
+                except IndexError:
                     downloads['version'] = 'unknown'
     else:
         for key, value in download_set_patterns('win'):
@@ -133,40 +132,52 @@ def download_link(os):
     else:
         return download_choices('date').get('date', '')
 
+p_slashes = re.compile(r'(?:\/+)?(.*)', flags=re.I)
 
-@register.simple_tag
+
+def strip_leading_slashes(rel_path):
+    """
+    Removes slashes from the begging if rel_path string. Intended for use
+    with orange* assignment tags.
+
+    :param rel_path: Relative path, string
+    :return: First capture group of regex match, the part without leading
+             slashes
+    """
+    m = re.match(p_slashes, rel_path)
+    return m.group(1)
+
+
+# assignment tags are deprecated since 1.9, use simple tags instead when
+# upgrading
+@register.assignment_tag
 def orange3_bundle_url():
-    download_folder = reverse('download') + 'files/'
-    orange3_bundle = download_choices('mac').get('bundle-orange3', '')
-    return download_folder + orange3_bundle
+    dl_url = strip_leading_slashes(reverse('download')) + 'files/'
+    return dl_url + download_choices('mac').get('bundle-orange3', '')
 
 
-@register.simple_tag
+@register.assignment_tag
 def orange3_win32_installer_url():
-    download_folder = reverse('download') + 'files/'
-    filename = download_choices('win').get('orange3-win32-installer', '')
-    return download_folder + filename
+    dl_url = strip_leading_slashes(reverse('download')) + 'files/'
+    return dl_url + download_choices('win').get('orange3-win32-installer', '')
 
 
-@register.simple_tag
+@register.assignment_tag
 def orange2_bundle_url():
-    download_folder = reverse('download') + 'files/'
-    orange2_bundle = download_choices('mac').get('mac', '')
-    return download_folder + orange2_bundle
+    dl_url = strip_leading_slashes(reverse('download')) + 'files/'
+    return dl_url + download_choices('mac').get('mac', '')
 
 
-@register.simple_tag
+@register.assignment_tag
 def orange2_win32_installer_url():
-    download_folder = reverse('download') + 'files/'
-    filename = download_choices('win').get('winw27', '')
-    return download_folder + filename
+    dl_url = strip_leading_slashes(reverse('download')) + 'files/'
+    return dl_url + download_choices('win').get('winw27', '')
 
 
-@register.simple_tag
+@register.assignment_tag
 def orange2_source_url():
-    download_folder = reverse('download') + 'files/'
-    filename = download_choices('win').get('source', '')
-    return download_folder + filename
+    dl_url = strip_leading_slashes(reverse('download')) + 'files/'
+    return dl_url + download_choices('win').get('source', '')
 
 
 def addonsget(searchtag):

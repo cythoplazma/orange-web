@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import os
 import socket
+from django.template.loader import add_to_builtins
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+# Make static available everywhere
+add_to_builtins('django.templatetags.static')
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 SCREENSHOTS_DIR = \
@@ -51,7 +53,6 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'homepage'
 )
 
@@ -104,14 +105,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-DOWNLOAD_DIR = os.path.abspath("./download")
-DOWNLOAD_SET_PATTERN = os.path.join(DOWNLOAD_DIR, "filenames_%s.set")
-WIDGET_CATALOG = os.path.abspath("./homepage/static/widgets.json")
-FEATURES_CATALOG = os.path.abspath("./homepage/static/features.json")
-TESTIMONIALS_CATALOG = os.path.abspath("./homepage/static/testimonials.json")
-
-# A custom context processor
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-    'orange_web.processors.get_current_page',
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'homepage', 'static')
+DOWNLOAD_DIR = os.path.join(STATIC_ROOT, 'download')
+# noinspection PyUnresolvedReferences
+DOWNLOAD_SET_PATTERN = os.path.join(DOWNLOAD_DIR, 'filenames_%s.set')
+WIDGET_CATALOG = os.path.join(STATIC_ROOT, 'widgets.json')
+FEATURES_CATALOG = os.path.join(STATIC_ROOT, 'features.json')
+TESTIMONIALS_CATALOG = os.path.join(STATIC_ROOT, 'testimonials.json')

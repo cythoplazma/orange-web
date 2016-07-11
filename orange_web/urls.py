@@ -3,6 +3,7 @@ import os
 
 from django.conf import settings
 from django.conf.urls import url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import TemplateView
 
 from homepage import views
@@ -18,6 +19,8 @@ urlpatterns = [
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^download/$', views.download, name='download'),
     url(r'^toolbox/$', views.toolbox, name='toolbox'),
+    url(r'^donate/$', views.donate, name='donate'),
+    url(r'^download_start/(.*)/?$', views.donate, name='download_start'),
     url(r'^download/(windows|mac-os-x|linux|for-developers)/$',
         views.download,
         name='download'),
@@ -38,6 +41,9 @@ urlpatterns = [
         TemplateView.as_view(template_name='docs.html'),
         name='docs'),
 ]
+
+# resolve static file paths during development
+urlpatterns += staticfiles_urlpatterns()
 
 # Check the feature_templates folder. Add every template that it finds in it.
 feature_templates_dir = os.path.join(settings.BASE_DIR, 'homepage',
