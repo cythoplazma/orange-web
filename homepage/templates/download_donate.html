@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load tag_extras %}
+
+{% block content %}
+    <section id="features" class="features section custom-reduce-padding-2">
+        <div class="container">
+            {% if dl_url|length > 0 %}
+            {% comment %}If a user clicks on a download button, this popup shows up{% endcomment %}
+            <div class="row">
+                <div class="content col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="title">Download</h1>
+                    <p>Your Orange download will begin shortly. If it doesn't, <a id="download-link" href="{% static dl_url %}">click here</a>.</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="title">Donations</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="{% static 'plugins/jquery-1.10.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/startDownload.js' %}"></script>
+{% endblock content %}

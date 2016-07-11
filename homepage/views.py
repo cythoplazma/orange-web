@@ -138,6 +138,10 @@ def index(request):
     return render(request, 'homepage.html', response)
 
 
+def donate(request, dl_url=''):
+    return render(request, 'download_donate.html', {'dl_url': dl_url})
+
+
 def download(request, os=None):
     os_response = {'os': None}
     if os is None:

@@ -104,12 +104,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-DOWNLOAD_DIR = os.path.abspath("./download")
-DOWNLOAD_SET_PATTERN = os.path.join(DOWNLOAD_DIR, "filenames_%s.set")
-WIDGET_CATALOG = os.path.abspath("./homepage/static/widgets.json")
-FEATURES_CATALOG = os.path.abspath("./homepage/static/features.json")
-TESTIMONIALS_CATALOG = os.path.abspath("./homepage/static/testimonials.json")
+STATIC_ROOT = os.path.join(BASE_DIR, 'homepage', 'static')
+DOWNLOAD_DIR = os.path.join(STATIC_ROOT, 'download')
+DOWNLOAD_SET_PATTERN = os.path.join(DOWNLOAD_DIR, 'filenames_%s.set')
+WIDGET_CATALOG = os.path.join(STATIC_ROOT, 'widgets.json')
+FEATURES_CATALOG = os.path.join(STATIC_ROOT, 'features.json')
+TESTIMONIALS_CATALOG = os.path.join(STATIC_ROOT, 'testimonials.json')
 
 # A custom context processor
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
