@@ -60,19 +60,6 @@ jQuery(document).ready(function ($) {
             .colorbox({transition: "none", iframe: true, innerWidth: width, innerHeight: height});
     }
 
-    function resizeImages() {
-        var pImgs = $('.features .content p img');
-        pImgs.removeAttr('style');
-        pImgs.removeAttr('width');
-        var pWidth = $('.features div.content').width();
-        console.log(pWidth);
-        pImgs.each(function(i, el) {
-            if ( pWidth < $(this, el).width() ) {
-                $(this, el).css('width', pWidth);
-            }
-        });
-    }
-
     function disableDownloadButton() {
         $( "#main-page-download-button" ).parent().hide(0);
     }
@@ -83,12 +70,7 @@ jQuery(document).ready(function ($) {
         setYouTubeDimensions();
 
         $(window).on('resize', function () {
-            resizeImages();
             setYouTubeDimensions();
-        });
-
-        $(window).on('load', function () {
-            resizeImages();
         });
     }
     else {
