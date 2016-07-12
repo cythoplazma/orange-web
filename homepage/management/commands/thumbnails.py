@@ -1,13 +1,17 @@
-from PIL import Image
 import glob
 import os
+# noinspection PyPackageRequirements
+from PIL import Image
 
 from django.core.management.base import BaseCommand
+from django.conf import settings
 
-from homepage.views import discover_screenshots
+from orange_web.resources import discover_screenshots
 
 
 SCREENSHOT_ELEM = '<screenshot id="{0}" title="TODO" rank="999"></screenshot>'
+# Sub-directory where generated thumbs will be saved to
+REL_SAVE_DIR = 'thumbs'
 
 
 class Command(BaseCommand):
@@ -15,9 +19,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         size = (180, 180)
-        folder = os.path.dirname(os.path.realpath(__file__))
-        static = os.path.join(folder, "../../static")
-        pngs = os.path.join(static, "homepage/screenshots/*.png")
+        static = settings.STATIC_ROOT
+        # noinspection PyUnresolvedReferences
+        pngs = os.path.join(static, 'homepage/screenshots/images/*.png')
 
         screenshots = discover_screenshots()
         screen_ids = [screen['id'] for screen in screenshots]
@@ -25,7 +29,7 @@ class Command(BaseCommand):
 
         for f in glob.glob(pngs):
             snp_dir = os.path.dirname(f)
-            tbn_dir = os.path.join(snp_dir, "./thumbs")
+            tbn_dir = os.path.join(snp_dir, REL_SAVE_DIR)
             fname = os.path.basename(f)
             _id, ext = os.path.splitext(fname)
 
@@ -35,7 +39,11 @@ class Command(BaseCommand):
             im = Image.open(f)
             im = im.convert("RGBA")
             im.thumbnail(size, Image.ANTIALIAS)
-            im.save(os.path.join(tbn_dir, fname))
+            try:
+                im.save(os.path.join(tbn_dir, fname))
+            except IOError:
+                print('Create "{0}" sub-directory first'.format(REL_SAVE_DIR))
+                return
 
         for screenshot in screenshots:
             if not os.path.isfile(os.path.join(static, screenshot['img'])):
