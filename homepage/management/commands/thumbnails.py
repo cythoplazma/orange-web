@@ -13,6 +13,7 @@ SCREENSHOT_ELEM = '<screenshot id="{0}" title="TODO" rank="999"></screenshot>'
 # Sub-directory where generated thumbs will be saved to
 REL_SAVE_DIR = 'thumbs'
 
+
 class Command(BaseCommand):
     help = 'Generates thumbnails for screenshots'
 
