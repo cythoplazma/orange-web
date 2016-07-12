@@ -132,36 +132,51 @@ def download_link(os):
     else:
         return download_choices('date').get('date', '')
 
+p_slashes = re.compile(r'(?:\/+)?(.*)', flags=re.I)
+
+
+def strip_leading_slashes(rel_path):
+    """
+    Removes slashes from the begging if rel_path string. Intended for use
+    with orange* assignment tags.
+
+    :param rel_path: Relative path, string
+    :return: First capture group of regex match, the part without leading
+             slashes
+    """
+    m = re.match(p_slashes, rel_path)
+    return m.group(1)
+
 
 # assignment tags are deprecated since 1.9, use simple tags instead when
 # upgrading
 @register.assignment_tag
 def orange3_bundle_url():
-    dl_url = reverse('download')[1:] + 'files/'
+    dl_url = strip_leading_slashes(reverse('download')) + 'files/'
     return dl_url + download_choices('mac').get('bundle-orange3', '')
 
 
 @register.assignment_tag
 def orange3_win32_installer_url():
-    dl_url = reverse('download')[1:] + 'files/'
+    dl_url = strip_leading_slashes(reverse('download')) + 'files/'
     return dl_url + download_choices('win').get('orange3-win32-installer', '')
 
 
 @register.assignment_tag
 def orange2_bundle_url():
-    dl_url = reverse('download')[1:] + 'files/'
+    dl_url = strip_leading_slashes(reverse('download')) + 'files/'
     return dl_url + download_choices('mac').get('mac', '')
 
 
 @register.assignment_tag
 def orange2_win32_installer_url():
-    dl_url = reverse('download')[1:] + 'files/'
+    dl_url = strip_leading_slashes(reverse('download')) + 'files/'
     return dl_url + download_choices('win').get('winw27', '')
 
 
 @register.assignment_tag
 def orange2_source_url():
-    dl_url = reverse('download')[1:] + 'files/'
+    dl_url = strip_leading_slashes(reverse('download')) + 'files/'
     return dl_url + download_choices('win').get('source', '')
 
 
