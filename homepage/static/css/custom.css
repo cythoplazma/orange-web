@@ -62,8 +62,7 @@ h6, .h6 {
 .btn-warning {
     color: #fff;
     background-color: #E19C14;
-    border: solid 2px;
-    border-color: #d99614;
+    border: 2px solid #d99614;
 }
 
 .big-button-empty {
@@ -130,7 +129,6 @@ div.screenshot-container div.content {
     -ms-transition: -ms-transform ease-out 0.2s, background 0.3s;
     -o-transition: -o-transform ease-out 0.2s, background 0.3s;
     max-width: 220px;
-    float: center;
 }
 .screenshot-image {
     position: relative;
@@ -187,8 +185,7 @@ ul.files li {
 }
 .icon-addons a {
     display:inline;
-    margin: 0 5px;
-    margin-bottom: 20px;
+    margin: 0 5px 20px;
     font-size: 16px;
 }
 .icon-addons i {
@@ -328,8 +325,7 @@ h3.custom-accordion-title {
 }
 .table td.custom-td {
     border-top: none;
-    padding: 2px 0;
-    padding-right: 5px;
+    padding: 2px 5px 2px 0;
     font-size: 14px;
 }
 
@@ -411,6 +407,6 @@ h3.custom-accordion-title {
     max-width: 550px;
 }
 
-img {
+.features .content p img {
     max-width: 700px;
 }

@@ -63,14 +63,15 @@ jQuery(document).ready(function ($) {
     function resizeImages() {
         var pImgs = $('.features .content p img');
         pImgs.removeAttr('style');
-        var pWidth = $('.features .content p').width();
+        pImgs.removeAttr('width');
+        var pWidth = $('.features div.content').width();
+        console.log(pWidth);
         pImgs.each(function(i, el) {
             if ( pWidth < $(this, el).width() ) {
                 $(this, el).css('width', pWidth);
             }
         });
     }
-    resizeImages();
 
     function disableDownloadButton() {
         $( "#main-page-download-button" ).parent().hide(0);
@@ -84,6 +85,10 @@ jQuery(document).ready(function ($) {
         $(window).on('resize', function () {
             resizeImages();
             setYouTubeDimensions();
+        });
+
+        $(window).on('load', function () {
+            resizeImages();
         });
     }
     else {
