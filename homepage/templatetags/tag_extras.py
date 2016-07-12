@@ -137,31 +137,31 @@ def download_link(os):
 # upgrading
 @register.assignment_tag
 def orange3_bundle_url():
-    dl_url = reverse('download') + 'files/'
+    dl_url = reverse('download')[1:] + 'files/'
     return dl_url + download_choices('mac').get('bundle-orange3', '')
 
 
 @register.assignment_tag
 def orange3_win32_installer_url():
-    dl_url = reverse('download') + 'files/'
+    dl_url = reverse('download')[1:] + 'files/'
     return dl_url + download_choices('win').get('orange3-win32-installer', '')
 
 
 @register.assignment_tag
 def orange2_bundle_url():
-    dl_url = reverse('download') + 'files/'
+    dl_url = reverse('download')[1:] + 'files/'
     return dl_url + download_choices('mac').get('mac', '')
 
 
 @register.assignment_tag
 def orange2_win32_installer_url():
-    dl_url = reverse('download') + 'files/'
+    dl_url = reverse('download')[1:] + 'files/'
     return dl_url + download_choices('win').get('winw27', '')
 
 
 @register.assignment_tag
 def orange2_source_url():
-    dl_url = reverse('download') + 'files/'
+    dl_url = reverse('download')[1:] + 'files/'
     return dl_url + download_choices('win').get('source', '')
 
 

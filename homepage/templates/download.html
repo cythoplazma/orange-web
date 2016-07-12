@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load cache %}
-{% load static from staticfiles %}
 {% load tag_extras %}
 
 {% block content %}
@@ -61,13 +60,13 @@
                            <div style="width: 300px; text-align:center; padding-top:10px">
                             {% if os == "windows" %}
                                 {% orange3_win32_installer_url as dl_url %}
-                                <a id="main-page-download-button-win" class="btn btn-warning big-button-base" href="/download_start{{ dl_url }}">
+                                <a id="main-page-download-button-win" class="btn btn-warning big-button-base" href="/download_start/{{ dl_url }}">
                                     Download Orange
                                 </a>
                                 <p style="margin-top: 0;">Windows Build - {% download_link 'date' %}</p>
                             {% elif os == "mac-os-x" %}
                                 {% orange3_bundle_url as dl_url %}
-                                <a id="main-page-download-button-mac" class="btn btn-warning big-button-base" href="/download_start{{ dl_url }}">
+                                <a id="main-page-download-button-mac" class="btn btn-warning big-button-base" href="/download_start/{{ dl_url }}">
                                     Download Orange
                                 </a>
                                 <p style="margin-top:0;">Mac OS X Build - {% download_link 'date' %}</p>
@@ -82,13 +81,13 @@
                 <div class="faq-col col-md-12 col-sm-12 col-xs-12">
                     <div class="content">
                         {% if os == "windows" %}
-                            {% cache 1 dl_win_html %}{% download_win %}{% endcache %}
+                            {% cache 43200 dl_win_html %}{% download_win %}{% endcache %}
                         {% elif os == "mac-os-x" %}
-                            {% cache 1 dl_mac_html %}{% download_mac %}{% endcache %}
+                            {% cache 43200 dl_mac_html %}{% download_mac %}{% endcache %}
                         {% elif os == "linux" %}
-                            {% cache 1 dl_source_html %}{% download_source %}{% endcache %}
+                            {% cache 43200 dl_source_html %}{% download_source %}{% endcache %}
                         {% else %}
-                            {% cache 1 dl_win_html %}{% download_win %}{% endcache %}
+                            {% cache 43200 dl_win_html %}{% download_win %}{% endcache %}
                         {% endif %}
                     </div>
                 </div>
