@@ -340,10 +340,6 @@ blockquote {
   min-height: 260px;
 }
 
-/*.docs-devs {*/
-  /*padding: 0 40px;*/
-/*}*/
-
 @media (min-width: 992px) {
     .footer {
         position: absolute;
@@ -1029,6 +1025,10 @@ blockquote {
     display: block;
     margin: 0 auto;
   }
+
+  h2.docs-subtitle {
+    min-height: 50px;
+  }
 }
 /* Medium devices (desktops, 1040px and up) */
 @media (min-width: 1040px) {
@@ -1048,10 +1048,6 @@ blockquote {
     height: 360px;
     display: block;
     margin: 0 auto;
-  }
-
-  h2.docs-subtitle {
-    min-height: 50px;
   }
 }
 /* Large devices (large desktops, 1200px and up) */
@@ -1073,6 +1069,9 @@ blockquote {
     display: block;
     margin: 0 auto;
   }
+  h2.docs-subtitle {
+    min-height: inherit;
+  }
 }
 
 /* Custom */
@@ -1084,4 +1083,3 @@ pre {
 input#search-box {
     margin: 60px 0 20px 0;
 }
-
