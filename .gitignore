@@ -27,12 +27,3 @@ media/*
 
 # Ignore DB files
 *.db
-
-# Ignore work files
-.gitignore
-gmon.out
-homepage/static/*.jpg
-homepage/static/*.jpeg
-homepage/static/*.xcf
-homepage/static/*.docx
-colorbox/
