@@ -1,12 +1,13 @@
-import random
 import re
 import requests
 import json
+import logging
 
 from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.mail import send_mail
+from django.template import RequestContext
 
 from homepage.templatetags.tag_extras import download_choices
 
@@ -17,6 +18,9 @@ from orange_web.resources import WIDG_JS
 from orange_web.resources import LICENSE
 from orange_web.resources import ADMINS
 from orange_web.resources import TESTIMONIALS
+from orange_web.processors import get_current_host
+
+logger = logging.getLogger('orange-web')
 
 
 def screens(request):
@@ -129,9 +133,12 @@ def detect_os(user_agent):
 
 
 def index(request):
+    if request.method == 'POST':
+        # This should come from the /thank-you/ URL
+        rp = request.POST
+        logger.info('DONATION FROM: {0}, {1}'.format(rp.get('E-mail', ''),
+                                                     rp.get('Name', '')))
     response = {
-        'random_screenshots': random.sample(SCREENSHOTS, 5),
-        'os': detect_os(request.META.get('HTTP_USER_AGENT', '')),
         'features': FEATURE_DESCRIPTIONS,
         'testimonials': TESTIMONIALS[:3],
     }
@@ -139,7 +146,12 @@ def index(request):
 
 
 def donate(request, dl_url=''):
-    return render(request, 'download_donate.html', {'dl_url': dl_url})
+    co = RequestContext(request, {'dl_url': dl_url}, [get_current_host])
+    return render(request, 'download_donate.html', co)
+
+
+def thank_you(request):
+    return render(request, 'thank_you.html')
 
 
 def download(request, os=None):

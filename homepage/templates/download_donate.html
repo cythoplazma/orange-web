@@ -9,19 +9,79 @@
             <div class="row">
                 <div class="content col-md-12 col-sm-12 col-xs-12">
                     <h1 class="title">Download</h1>
-                    <p>Your Orange download will begin shortly. If it doesn't, <a id="download-link" href="{% static dl_url %}">click here</a>.</p>
+                    <p>Your Orange download will begin shortly. If it doesn't, <a id="download-link" href="{% static dl_url %}"><b>click here</b></a>.</p>
                 </div>
             </div>
             {% endif %}
 
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12 content">
                     <h1 class="title">Donations</h1>
+                    <p>{% if dl_url|length > 0 %}While your copy of Orange is downloading, c{% else %}C{% endif %}onsider making a PayPal donation toward Biolab's open source efforts. After clicking the Donate button, you will be redirected to PayPal, where you can sort your donation. Thank you.</p>
+                    <form role="form" class="form-horizontal" action="https://www.paypal.com/cgi-bin/webscr" method="post" name="paypal-form" target="_top">
+                        {% comment %}
+                        <!-- Commented form input fields are omitted until further notice-->
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-3 col-xs-10" for="amount">Donation Amount:</label>
+                            <div class="col-lg-5 col-sm-7 col-xs-10 input-group fix-padding-left">
+                                <div class="display-inline">
+                                    <div class="input-group inline-label-input">
+                                        <div class="input-group-addon" id="basic-addon1">$</div>
+                                        <input class="form-control" type="text" id="custom-amount" name="Custom Amount" placeholder="Other">
+                                    </div>
+                                </div>
+                                <div class="display-inline jsonly">
+                                    <div class="btn-group btn-group-md" data-toggle="buttons" role="group" id="amount" aria-label="Donation Amount">
+                                        <label class="btn btn-secondary form-amount active">
+                                            <input type="radio" name="options" value="5" id="option1" autocomplete="off" checked>$5
+                                        </label>
+                                        <label class="btn btn-secondary form-amount">
+                                            <input type="radio" name="options" value="10" id="option2" autocomplete="off">$10
+                                        </label>
+                                        <label class="btn btn-secondary form-amount">
+                                            <input type="radio" name="options" value="20" id="option3" autocomplete="off">$20
+                                        </label>
+                                        <label class="btn btn-secondary form-amount">
+                                            <input type="radio" name="options" value="50" id="option4" autocomplete="off">$50
+                                        </label>
+                                        <label class="btn btn-secondary form-amount">
+                                            <input type="radio" name="options" value="100" id="option5" autocomplete="off">$100
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-3 col-xs-10" for="name">Name / Organization:</label>
+                            <div class="inline-label-input col-lg-5 col-sm-7 col-xs-10">
+                                <input class="form-control" type="text" id="name" name="Name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-3 col-xs-10" for="email">PayPal E-mail:</label>
+                            <div class="inline-label-input col-lg-5 col-sm-7 col-xs-10">
+                                <input class="form-control" type="email" id="email" name="E-mail" required>
+                                <input type="hidden" name="<email>" value="5">
+                            </div>
+                        </div>
+                        {% endcomment %}
+                        <input type="hidden" name="return" value="http://{{ current_host }}/thank-you/">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+                        <div class="form-group">
+                            <div class="{% comment %}col-lg-offset-2 col-sm-offset-3 {% endcomment %}col-md-10 col-sm-9">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <script type="text/javascript" src="{% static 'plugins/jquery-1.10.2.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/startDownload.js' %}"></script>
+    {% if dl_url|length > 0 %}
+        <script type="text/javascript" src="{% static 'plugins/jquery-1.10.2.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/startDownload.js' %}"></script>
+    {% endif %}
 {% endblock content %}
