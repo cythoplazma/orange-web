@@ -60,13 +60,13 @@
                            <div style="width: 300px; text-align:center; padding-top:10px">
                             {% if os == "windows" %}
                                 {% orange3_win32_installer_url as dl_url %}
-                                <a id="main-page-download-button-win" class="btn btn-warning big-button-base" href="/download_start/{{ dl_url }}">
+                                <a id="main-page-download-button-win" class="btn btn-warning big-button-base" href="/download-start/{{ dl_url }}">
                                     Download Orange
                                 </a>
                                 <p style="margin-top: 0;">Windows Build - {% download_link 'date' %}</p>
                             {% elif os == "mac-os-x" %}
                                 {% orange3_bundle_url as dl_url %}
-                                <a id="main-page-download-button-mac" class="btn btn-warning big-button-base" href="/download_start/{{ dl_url }}">
+                                <a id="main-page-download-button-mac" class="btn btn-warning big-button-base" href="/download-start/{{ dl_url }}">
                                     Download Orange
                                 </a>
                                 <p style="margin-top:0;">Mac OS X Build - {% download_link 'date' %}</p>

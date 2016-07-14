@@ -112,3 +112,9 @@ DOWNLOAD_SET_PATTERN = os.path.join(DOWNLOAD_DIR, 'filenames_%s.set')
 WIDGET_CATALOG = os.path.join(STATIC_ROOT, 'widgets.json')
 FEATURES_CATALOG = os.path.join(STATIC_ROOT, 'features.json')
 TESTIMONIALS_CATALOG = os.path.join(STATIC_ROOT, 'testimonials.json')
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.csrf',
+    'django.core.context_processors.request',
+)

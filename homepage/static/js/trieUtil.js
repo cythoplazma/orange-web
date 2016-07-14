@@ -4,7 +4,8 @@ jQuery(document).ready(function ($) {
 
     // on widget search box focus, scroll to it
     searchBox.focus(function () {
-        $(document).scrollTop( $(this).offset().top - $( "header" ).height() - 70 );
+        var offset = $(this).offset().top - $( "header" ).height() - 70;
+        $(document).scrollTop(offset);
     });
 
     // monitor text input
