@@ -12,11 +12,11 @@
                 <div class="content">
                     <p>Orange 2.7 is a legacy version of Orange. We think you should upgrade to the <a href="{% url 'download' %}">current version</a>, but if you still need the version 2.7, please download it below.</p>
                     {% orange2_win32_installer_url as dl_url %}
-                    <p>Windows: <a href="{% static dl_url %}">Orange 2.7 installer for Windows.</a></p>
+                    <p>Windows: <a href="/download-start/{{ dl_url }}">Orange 2.7 installer for Windows.</a></p>
                     {% orange2_bundle_url as dl_url %}
-                    <p>Mac OS: <a href="{% static dl_url %}">Orange 2.7 bundle for OSX.</a></p>
+                    <p>Mac OS: <a href="/download-start/{{ dl_url }}">Orange 2.7 bundle for OSX.</a></p>
                     {% orange2_source_url as dl_url %}
-                    <p>Other systems: <a href="{% static dl_url %}">Orange 2.7 source.</a></p>
+                    <p>Other systems: <a href="/download-start/{{ dl_url }}">Orange 2.7 source.</a></p>
                 </div>
             </div>
         </div>
